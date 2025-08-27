@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>True Cleaning Solutions | Commercial & Residential Cleaning in Milton Keynes</title>
+  <meta name="description" content="True Cleaning Solutions (TCS) – reliable commercial & residential cleaning in Milton Keynes. Trusted teams, flexible schedules, spotless results." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f3efe9;           /* warm beige */
+      --bg-2:#ece6dd;         /* lighter taupe */
+      --ink:#2a2520;          /* deep brown/charcoal */
+      --muted:#6d645d;        /* muted brown-grey */
+      --brand:#c7a57a;        /* soft gold accent */
+      --brand-2:#b59369;      /* darker accent */
+      --surface:#ffffff;      /* cards */
+      --ring: 0 0 0 4px rgba(199,165,122,.2);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(34,25,5,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:999px;border:1px solid transparent;background:var(--ink);color:#fff;font-weight:600;transition:.25s box-shadow,.25s transform,.25s background}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent;color:var(--ink);border-color:#00000022}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-2);border:1px solid #00000012;border-radius:999px;padding:.35rem .7rem;font-size:.85rem;color:var(--muted)}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:rgba(243,239,233,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #00000010}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .brand img.logo{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.05))}
+    .brand h1{font-size:1.05rem;line-height:1.1;margin:0}
+    .nav-links{display:flex;gap:1.2rem;font-weight:600;color:var(--muted)}
+    .nav-links a{padding:.5rem .75rem;border-radius:999px}
+    .nav-links a:hover{background:#00000008;color:var(--ink)}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero-media{position:relative;height:min(72vh,720px);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;background:#000}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .noise{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, rgba(0,0,0,.05), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.45));mix-blend:overlay}
+    .hero-overlay{position:absolute;inset:auto 0 0 0;padding:32px 20px 24px;background:linear-gradient(180deg, transparent, rgba(0,0,0,.55));color:#fff}
+    .hero-content{max-width:1120px;margin:0 auto;display:grid;gap:10px}
+    .hero h2{font-size:clamp(1.8rem, 2.8vw + 1rem, 3rem);margin:8px 0 0}
+    .hero p{max-width:780px;opacity:.92;margin:6px 0 0}
+    .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:14px}
+
+    .sound-toggle{position:absolute;right:18px;bottom:18px;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;background:rgba(255,255,255,.9);color:#111;border:1px solid #0000001a;cursor:pointer;font-weight:600}
+    .sound-toggle:hover{box-shadow:var(--shadow)}
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
+    .section-head h3{font-size:1.6rem;margin:0}
+    .grid{display:grid;gap:18px}
+
+    /* Services */
+    .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid #00000010;box-shadow:var(--shadow)}
+    .card h4{margin:.5rem 0 .25rem;font-size:1.1rem}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{background:var(--bg-2)}
+    .t-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .t{background:var(--surface);border:1px solid #00000010;border-radius:var(--radius);padding:20px;display:grid;gap:14px}
+    .person{display:flex;align-items:center;gap:12px}
+    .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #ffffff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .person b{display:block}
+    .stars{font-size:15px;color:#e2b66a;letter-spacing:2px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #00000022;background:#fff;color:var(--ink);font-size:1rem}
+    textarea{min-height:120px}
+    .hint{font-size:.9rem;color:var(--muted)}
+    .success{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#e6f7ed;border:1px solid #7ad4a4;color:#1f5135}
+    .error{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#fde8e8;border:1px solid #f5a6a6;color:#7b2222}
+
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid #00000010;background:#fff}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .foot small{color:var(--muted)}
+    .socials{display:flex;gap:14px}
+    .icon-btn{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:999px;border:1px solid #00000018;background:var(--surface)}
+    .icon-btn:hover{box-shadow:var(--shadow)}
+
+    /* Utility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <!-- ======================= HEADER ======================= -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Replace src with your final transparent PNG/SVG logo -->
+        <img class="logo" src="assets/tcs-logo@2x.png" alt="True Cleaning Solutions logo" />
+        <h1>True Cleaning Solutions</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero" aria-label="Intro">
+    <div class="hero-media">
+      <!-- TIP: Host your MP4 in the repo: assets/hero.mp4  (keep file < 25MB for GitHub). -->
+      <video id="heroVideo" autoplay muted playsinline loop preload="auto" poster="assets/hero-poster.jpg">
+        <source src="assets/hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="noise" aria-hidden="true"></div>
+      <button id="soundBtn" class="sound-toggle" type="button" aria-pressed="false" aria-controls="heroVideo">
+        <span id="soundIcon" aria-hidden="true">🔇</span>
+        <span id="soundLabel">Click for sound</span>
+      </button>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <span class="pill">Milton Keynes • Commercial & Residential</span>
+          <h2>Your reliable cleaning partner — integrity, trust, and a personal touch.</h2>
+          <p>From spotless offices to sparkling homes, we deliver consistent quality with friendly, trained professionals and flexible schedules that fit your life and business.</p>
+          <div class="hero-ctas">
+            <a class="btn" href="#contact">Get a quote</a>
+            <a class="btn ghost" href="#services">See services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SERVICES ===================== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h3>Services</h3>
+        <span class="pill">Fully insured • Vetted staff • All supplies available</span>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <h4>Commercial Cleaning</h4>
+          <p>Offices, clinics, shops and shared spaces. Reliable schedules, secure key holding, detailed checklists, and supervisor spot‑checks.</p>
+        </article>
+        <article class="card">
+          <h4>Residential Cleaning</h4>
+          <p>Weekly, fortnightly, or one‑off deep cleans. Kitchens, bathrooms, living areas and bedrooms — including beds dressing on request.</p>
+        </article>
+        <article class="card">
+          <h4>End of Tenancy / Deep Clean</h4>
+          <p>Top‑to‑bottom clean: limescale removal, inside cabinets, skirting, doors & frames, windows & frames, and floor care.</p>
+        </article>
+        <article class="card">
+          <h4>Optional Add‑ons</h4>
+          <p>Windows (in/out), appliances, oven, carpet refresh, upholstery spot clean, and consumables supply.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h3>What clients say</h3>
+        <span class="pill">5★ rated on Google</span>
+      </div>
+      <div class="grid t-grid">
+        <!-- Replace the src values with your 3 reviewer photos as requested -->
+        <article class="t">
+          <div class="person">
+            <img class="avatar" src="assets/testimonial-1.jpg" alt="Reviewer 1" />
+            <div>
+              <b>Daniyal Nadeem</b>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </div>
+          </div>
+          <p>“Georgi and her team have been brilliant — reliable, professional and thorough. We moved across the city and kept them on. Highly recommend!”</p>
+        </article>
+        <article class="t">
+          <div class="person">
+            <img class="avatar" src="assets/testimonial-2.jpg" alt="Reviewer 2" />
+            <div>
+              <b>Kosuru K</b>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </div>
+          </div>
+          <p>“Absolutely amazing. After trying many cleaners over 7–8 years, TCS is the first that consistently delivers hotel‑level results.”</p>
+        </article>
+        <article class="t">
+          <div class="person">
+            <img class="avatar" src="assets/testimonial-3.jpg" alt="Reviewer 3" />
+            <div>
+              <b>Local Client</b>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </div>
+          </div>
+          <p>“Attention to detail is outstanding — from windows and frames to deep kitchen and bathroom cleans. Trustworthy and friendly team.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ====================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h3>Contact us</h3>
+        <span class="pill">Response within 24 hours</span>
+      </div>
+      <!-- Web3Forms integration -->
+      <!-- IMPORTANT: Replace WEB3FORMS_ACCESS_KEY with your real access key from https://web3forms.com/ -->
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="74450c0e-6043-4d16-8c93-6ce648d01f75" />
+        <input type="hidden" name="from_name" value="True Cleaning Solutions Website" />
+        <input type="hidden" name="subject" value="New enquiry from TrueCleaningSolutions.co.uk" />
+        <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+          <div>
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" placeholder="Full name" required />
+          </div>
+          <div>
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Email" required />
+          </div>
+          <div>
+            <label class="sr-only" for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="Phone (optional)" />
+          </div>
+          <div>
+            <label class="sr-only" for="service">Service</label>
+            <select id="service" name="service">
+              <option value="Commercial Cleaning">Commercial Cleaning</option>
+              <option value="Residential Cleaning">Residential Cleaning</option>
+              <option value="End of Tenancy / Deep Clean">End of Tenancy / Deep Clean</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your space, schedule and any priorities…" required></textarea>
+
+        <!-- This ensures you receive replies straight to your inbox -->
+        <input type="hidden" name="replyto" value="{{email}}">
+        <!-- Optional redirect page after success -->
+        <!-- <input type="hidden" name="redirect" value="https://truecleaningsolutions.co.uk/thanks.html"> -->
+
+        <button class="btn" type="submit">Send message</button>
+        <p class="hint">Messages are delivered to <b>contact@truecleaningsolutions.co.uk</b>.</p>
+        <div id="success" class="success">Thank you — your message has been sent. We’ll get back to you shortly.</div>
+        <div id="error" class="error">Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ====================== -->
+  <footer>
+    <div class="container foot">
+      <small>© 2025 True Cleaning Solutions</small>
+      <div class="socials" aria-label="Social media links">
+        <!-- As requested: icons only, no labels, in the white bottom bar -->
+        <a class="icon-btn" href="https://g.page/r/CeXXXXX" target="_blank" rel="noopener" aria-label="Google Reviews">
+          <!-- Google G SVG -->
+          <svg width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M43.6 20.5H42V20H24v8h11.3C33.7 31.7 29.3 35 24 35c-6.6 0-12-5.4-12-12S17.4 11 24 11c3 0 5.7 1.1 7.7 3l5.7-5.7C34 4.9 29.3 3 24 3 12.3 3 3 12.3 3 24s9.3 21 21 21 21-9.3 21-21c0-1.2-.1-2.3-.4-3.5z" fill="#FFC107"/>
+            <path d="M6.3 14.7l6.6 4.8C14.5 16.2 18.9 13 24 13c3 0 5.7 1.1 7.7 3l5.7-5.7C34 4.9 29.3 3 24 3 16 3 9.1 7.6 6.3 14.7z" fill="#FF3D00"/>
+            <path d="M24 45c5.2 0 9.9-2 13.4-5.3l-6.2-5.2C29.2 36.4 26.7 37 24 37c-5.2 0-9.6-3.1-11.4-7.5l-6.6 5.1C9 40.4 15.9 45 24 45z" fill="#4CAF50"/>
+            <path d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.3-3.5 5.7-6.1 6.8l6.2 5.2C37 39 45 33 45 24c0-1.2-.1-2.3-.4-3.5z" fill="#1976D2"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="https://facebook.com/truecleaningsolutions" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.99 3.66 9.13 8.44 9.94v-7.03H7.9v-2.91h2.42V9.41c0-2.4 1.43-3.73 3.62-3.73 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.19 0-1.56.74-1.56 1.49v1.79h2.65l-.42 2.91h-2.23v7.03c4.78-.81 8.44-4.95 8.44-9.94z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://instagram.com/truecleaningsolutions" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a6 6 0 110 12 6 6 0 010-12zm0 2.2A3.8 3.8 0 1015.8 13 3.8 3.8 0 0012 9.2zM18.25 5.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ====== Hero Sound Toggle ======
+    const video = document.getElementById('heroVideo');
+    const btn = document.getElementById('soundBtn');
+    const icon = document.getElementById('soundIcon');
+    const label = document.getElementById('soundLabel');
+
+    function updateSoundUI(){
+      const muted = video.muted;
+      icon.textContent = muted ? '🔇' : '🔊';
+      label.textContent = muted ? 'Click for sound' : 'Mute';
+      btn.setAttribute('aria-pressed', String(!muted));
+    }
+    btn.addEventListener('click', () => { video.muted = !video.muted; if(!video.muted){ video.play().catch(()=>{});} updateSoundUI(); });
+    document.addEventListener('visibilitychange', ()=>{ if(document.hidden) { video.muted = true; updateSoundUI(); } });
+    updateSoundUI();
+
+    // ====== Web3Forms enhanced UX (optional) ======
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('success');
+    const error = document.getElementById('error');
+
+    form.addEventListener('submit', async (e) => {
+      // Comment out next line if you prefer default POST redirect behavior
+      e.preventDefault();
+      success.style.display = 'none';
+      error.style.display = 'none';
+
+      const data = new FormData(form);
+      try{
+        const resp = await fetch(form.action, { method: 'POST', body: data });
+        const json = await resp.json();
+        if(json.success){
+          success.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch(err){
+        console.error(err);
+        error.style.display = 'block';
+      }
+    });
+  </script>
+
+  <!-- ================= SETUP NOTES =================
+  1) Place assets in /assets :
+     - hero.mp4 (short, muted by default). Also add hero-poster.jpg for faster first paint.
+     - tcs-logo@2x.png (transparent background)
+     - testimonial-1.jpg / testimonial-2.jpg / testimonial-3.jpg (your chosen photos)
+
+  2) Web3Forms: Sign in at web3forms.com → copy your Access Key → replace WEB3FORMS_ACCESS_KEY above.
+     - Make sure the target email in your Web3Forms settings is contact@truecleaningsolutions.co.uk.
+     - If you still don’t receive emails, check spam and Web3Forms logs.
+
+  3) GitHub Pages:
+     - Create a repo, add this index.html and an assets folder with the images/video.
+     - Settings → Pages → Deploy from branch → main / root.
+
+  4) Footer socials: Update the three hrefs to your exact Google review page, Facebook and Instagram.
+  5) Colours & spacing follow your beige/taupe brief. Adjust in :root if needed.
+  -->
+</body>
+</html>
