@@ -236,6 +236,27 @@
   #services .container{ grid-template-columns: 1fr; }
   #services .svc-frame{ grid-column: 1; }
 }  
+/* === Remove frame around the services picture, keep it on the right === */
+#services .svc-frame{
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+#services .svc-inner{
+  background: transparent !important;
+  border-radius: 0 !important;  /* no rounded edges */
+  /* keep your current aspect-ratio so size stays the same */
+}
+
+/* keep the image filling the box nicely */
+#services .svc-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
   </style>
 </head>
 <body>
