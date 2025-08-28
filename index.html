@@ -317,6 +317,94 @@
   #services .card::after{ transition: none; }
   #services .card:hover{ transform:none; box-shadow: var(--shadow); }
 }  
+  /* === Hover visuals for TESTIMONIALS cards (match Services style) === */
+#testimonials .t{
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);            /* frosted glass */
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.40);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              box-shadow .35s, border-color .35s, background-color .35s;
+  transform: translateZ(0);
+}
+#testimonials .t:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
+  border-color: rgba(199,165,122,0.55);          /* warm brand glow */
+}
+/* sheen sweep */
+#testimonials .t::before{
+  content:"";
+  position:absolute; top:0; left:-60%;
+  width:50%; height:100%;
+  background: linear-gradient(75deg, transparent 0%,
+             rgba(255,255,255,.5) 50%, transparent 100%);
+  transform: skewX(-20deg) translateX(-120%);
+  transition: transform .7s ease;
+  pointer-events:none;
+}
+#testimonials .t:hover::before{
+  transform: skewX(-20deg) translateX(260%);
+}
+/* subtle corner glow */
+#testimonials .t::after{
+  content:"";
+  position:absolute; inset:0; pointer-events:none;
+  border-radius: inherit;
+  background: radial-gradient(80% 60% at 100% 0%,
+             rgba(199,165,122,.18), transparent 60%);
+  opacity: 0; transition: opacity .35s ease;
+}
+#testimonials .t:hover::after{ opacity: 1; }
+
+/* === Hover visuals for OUR STORY timeline cards === */
+/* Safe to paste even if the Our story section isn’t added yet. */
+#our-story .tl-card{
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.40);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              box-shadow .35s, border-color .35s, background-color .35s;
+}
+#our-story .tl-item:hover .tl-card{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
+  border-color: rgba(199,165,122,0.55);
+}
+/* sheen sweep on the card */
+#our-story .tl-card::before{
+  content:"";
+  position:absolute; top:0; left:-60%;
+  width:50%; height:100%;
+  background: linear-gradient(75deg, transparent 0%,
+             rgba(255,255,255,.5) 50%, transparent 100%);
+  transform: skewX(-20deg) translateX(-120%);
+  transition: transform .7s ease;
+  pointer-events:none;
+}
+#our-story .tl-item:hover .tl-card::before{
+  transform: skewX(-20deg) translateX(260%);
+}
+/* make the timeline dot glow a bit on hover */
+#our-story .tl-item:hover .tl-dot{
+  box-shadow: 0 0 0 6px rgba(199,165,122,.25);
+}
+
+/* Accessibility: reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce){
+  #testimonials .t,
+  #testimonials .t::before,
+  #testimonials .t::after,
+  #our-story .tl-card,
+  #our-story .tl-card::before{ transition: none; }
+  #testimonials .t:hover,
+  #our-story .tl-item:hover .tl-card{ transform:none; box-shadow: var(--shadow); }
+}  
   </style>
 </head>
 <body>
