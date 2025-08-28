@@ -404,6 +404,38 @@
   #our-story .tl-card::before{ transition: none; }
   #testimonials .t:hover,
   #our-story .tl-item:hover .tl-card{ transform:none; box-shadow: var(--shadow); }
+} 
+  /* === Mobile header fix: prevent title/menu overlap === */
+@media (max-width: 768px){
+  header .nav{
+    display: flex;
+    flex-wrap: wrap;        /* allow to break into 2 rows */
+    height: auto;           /* override fixed 72px height */
+    padding: 8px 0;
+    row-gap: 8px;
+  }
+  .brand img.logo{ width: 40px; height: 40px; }
+  .brand h1{
+    font-size: 0.95rem;     /* smaller title on phones */
+    line-height: 1.1;
+    margin: 0;
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;/* trims if super long */
+  }
+  .nav-links{
+    width: 100%;            /* push menu to its own row */
+    justify-content: space-between;
+    gap: .5rem;
+    font-size: .95rem;
+  }
+  .nav-links a{ padding: .45rem .6rem; }
+}
+
+/* If your phone is very small, hide the text title but keep the logo */
+@media (max-width: 380px){
+  .brand h1{ display: none; }
 }  
   </style>
 </head>
