@@ -162,6 +162,28 @@
 
     /* Utility */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* === Frosted glass cards in Our services === */
+#services .card{
+  /* semi-transparent white so the wallpaper peeks through */
+  background: rgba(255, 255, 255, 0.55);
+  /* blur/saturate whatever is behind the card */
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  /* softer border for glassy edge */
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  /* keep your rounded corners & shadow gentle */
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(34,25,5,0.06);
+}
+
+/* optional: make the section’s background image visible if you added one */
+#services{
+  /* if you already set a background for #services, you can ignore this */
+  /* Example wallpaper line (safe to keep or adjust): */
+  /* background:
+    linear-gradient(to bottom, rgba(243,239,233,0.92), rgba(243,239,233,0.92)),
+    url("assets/services-bg.jpg") center/cover no-repeat; */
+}
   </style>
 </head>
 <body>
