@@ -256,7 +256,14 @@
   height: 100%;
   object-fit: cover;
 }
-
+/* OPTIONAL: let the image use its natural height (no fixed aspect) */
+#services .svc-inner{
+  aspect-ratio: auto !important;
+  min-height: 0 !important;
+}
+#services .svc-inner img{
+  height: auto !important;   /* stop stretching */
+}
   </style>
 </head>
 <body>
