@@ -968,6 +968,29 @@ if (navToggle && navLinksEl){
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 }  
+    // === Scroll-into-view glow (works on desktop + mobile) ===
+(function(){
+  // Skip if user prefers reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const targets = document.querySelectorAll('#services .card, #testimonials .t, #our-story .tl-card');
+  if (!('IntersectionObserver' in window) || !targets.length) return;
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add('glow-in');
+        // keep the glow briefly, then fade back
+        setTimeout(() => el.classList.remove('glow-in'), 800);
+        // trigger only once per element
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.25 }); // ~25% visible
+
+  targets.forEach(el => io.observe(el));
+})();
   </script>
 
   <!-- ================= SETUP NOTES =================
