@@ -595,6 +595,25 @@
     transition: transform .7s ease;
   }
 }
+    /* === Subtle glow when cards scroll into view === */
+#services .card,
+#testimonials .t,
+#our-story .tl-card{
+  transition: box-shadow .45s ease, border-color .45s ease, transform .45s ease;
+  will-change: box-shadow, transform; /* smoother animation */
+}
+
+/* the temporary glow state */
+.glow-in{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
+  border-color: rgba(199,165,122,0.55) !important; /* warm brand glow */
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce){
+  .glow-in{ transform:none; }
+}
   </style>
 </head>
 <body>
