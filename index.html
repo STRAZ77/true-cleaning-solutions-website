@@ -566,6 +566,35 @@
   box-shadow: var(--shadow);
   transform: translateY(-1px);
 }  
+    /* === Mobile: show card effect on tap (since :hover doesn't exist) === */
+@media (hover: none) and (pointer: coarse){
+  /* make cards “tap-able” so :active triggers reliably */
+  #services .card,
+  #testimonials .t,
+  #our-story .tl-card{ cursor: pointer; }
+
+  /* lift + glow on tap/focus */
+  #services .card:active,
+  #services .card:focus-visible,
+  #services .card:focus-within,
+  #testimonials .t:active,
+  #testimonials .t:focus-visible,
+  #testimonials .t:focus-within,
+  #our-story .tl-item:active .tl-card,
+  #our-story .tl-item:focus-within .tl-card{
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(34,25,5,0.14);
+    border-color: rgba(199,165,122,0.55);
+  }
+
+  /* run the sheen sweep while pressed */
+  #services .card:active::before,
+  #testimonials .t:active::before,
+  #our-story .tl-item:active .tl-card::before{
+    transform: skewX(-20deg) translateX(260%);
+    transition: transform .7s ease;
+  }
+}
   </style>
 </head>
 <body>
