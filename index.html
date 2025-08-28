@@ -196,6 +196,46 @@
     linear-gradient(to bottom, rgba(243,239,233,0.92), rgba(243,239,233,0.92)),
     url("assets/services-bg.jpg") center/cover no-repeat; */
 }
+  /* === Our services: 2-column layout with a right-side visual box === */
+#services .container{
+  display: grid;
+  grid-template-columns: 1fr min(38ch, 420px); /* left = content, right = picture box */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Keep title + cards in the LEFT column */
+#services .section-head,
+#services .cards{
+  grid-column: 1;
+}
+
+/* Picture box styles (RIGHT column) */
+#services .svc-frame{
+  grid-column: 2;
+  background: var(--surface);
+  border: 1px solid #00000010;
+  border-radius: var(--radius);
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+#services .svc-inner{
+  aspect-ratio: 16 / 9;           /* responsive box that scales with screen */
+  border-radius: calc(var(--radius) - 6px);
+  overflow: hidden;
+  background: #ddd;
+}
+#services .svc-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* nice crop */
+}
+
+/* Mobile: stack into one column, picture goes beneath content */
+@media (max-width: 900px){
+  #services .container{ grid-template-columns: 1fr; }
+  #services .svc-frame{ grid-column: 1; }
+}  
   </style>
 </head>
 <body>
