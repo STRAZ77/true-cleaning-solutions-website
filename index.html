@@ -877,6 +877,15 @@
         error.style.display = 'block';
       }
     });
+  // ====== Mobile hamburger toggle ======
+const navToggle = document.getElementById('navToggle');
+const navLinksEl = document.getElementById('primary-navigation');
+if (navToggle && navLinksEl){
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+}  
   </script>
 
   <!-- ================= SETUP NOTES =================
