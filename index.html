@@ -527,7 +527,13 @@
     backdrop-filter: blur(10px) saturate(140%);
   }
   .nav-links.open{ display: flex; }  /* show when toggled */
-}  
+} 
+  /* === Make the hero sit directly under the header (no top gap) === */
+.hero{ padding-top: 0 !important; }
+
+/* Optional: if you want ZERO space above and below the hero, use this instead:
+.hero{ padding: 0 !important; }
+*/  
   </style>
 </head>
 <body>
