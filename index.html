@@ -533,7 +533,24 @@
 
 /* Optional: if you want ZERO space above and below the hero, use this instead:
 .hero{ padding: 0 !important; }
-*/  
+*/
+    /* === Mobile hamburger look: transparent button + grey lines === */
+@media (max-width: 768px){
+  .nav-toggle{
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent !important;  /* no box */
+    border: 0 !important;                 /* no border */
+    box-shadow: none !important;          /* no shadow */
+    color: var(--muted) !important;       /* grey ☰ from your theme */
+    /* fallback grey if vars fail */
+    color: #6d645d !important;
+  }
+  .nav-toggle:focus{
+    outline: none;
+    box-shadow: var(--ring);              /* keep nice focus ring */
+  }
+}
   </style>
 </head>
 <body>
