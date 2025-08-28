@@ -471,7 +471,63 @@
 @media (max-width: 360px){
   .brand h1{ display:none; }
 }
-*/  
+*/
+  /* === Mobile hamburger menu (phones only) === */
+.nav-toggle{ display:none; } /* hidden on desktop */
+
+@media (max-width: 768px){
+  header .nav{
+    display: flex;
+    flex-wrap: wrap;        /* two rows allowed */
+    height: auto;
+    padding: 8px 0;
+    row-gap: 8px;
+  }
+
+  .brand{ flex: 1; display:flex; align-items:center; gap:.5rem; }
+  .brand h1{
+    max-width: 100% !important;
+    white-space: normal !important;   /* allow wrapping */
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* show hamburger on the right */
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    margin-left: auto;              /* pushes it to the right */
+    border-radius: 10px;
+    border: 1px solid #00000022;
+    background: #fff;
+    font-size: 20px; font-weight: 700;
+    cursor: pointer;
+  }
+  .nav-toggle:focus{ outline: none; box-shadow: var(--ring); }
+
+  /* collapse menu into a vertical list */
+  .nav-links{
+    width: 100%;
+    display: none;                  /* hidden until toggled */
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+  }
+  .nav-links a{
+    padding: 12px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.60);         /* frosted look */
+    border: 1px solid rgba(0,0,0,0.08);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+  .nav-links.open{ display: flex; }  /* show when toggled */
+}  
   </style>
 </head>
 <body>
