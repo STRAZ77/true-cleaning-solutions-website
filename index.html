@@ -264,6 +264,59 @@
 #services .svc-inner img{
   height: auto !important;   /* stop stretching */
 }
+  /* === Hover visuals for Our services cards (LIPSMK-style) === */
+#services .card{
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.40);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              box-shadow .35s, border-color .35s, background-color .35s;
+  transform: translateZ(0); /* smooth GPU */
+}
+
+/* lift + glow */
+#services .card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
+  border-color: rgba(199,165,122,0.55); /* brand glow */
+}
+
+/* sheen sweep across the card */
+#services .card::before{
+  content:"";
+  position:absolute; top:0; left:-60%;
+  width:50%; height:100%;
+  background: linear-gradient(75deg, transparent 0%,
+             rgba(255,255,255,.5) 50%, transparent 100%);
+  transform: skewX(-20deg) translateX(-120%);
+  transition: transform .7s ease;
+  pointer-events:none;
+}
+#services .card:hover::before{
+  transform: skewX(-20deg) translateX(260%);
+}
+
+/* subtle corner glow on hover */
+#services .card::after{
+  content:"";
+  position:absolute; inset:0; pointer-events:none;
+  border-radius: inherit;
+  background: radial-gradient(80% 60% at 100% 0%,
+             rgba(199,165,122,.18), transparent 60%);
+  opacity: 0; transition: opacity .35s ease;
+}
+#services .card:hover::after{ opacity: 1; }
+
+/* accessibility: reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce){
+  #services .card,
+  #services .card::before,
+  #services .card::after{ transition: none; }
+  #services .card:hover{ transform:none; box-shadow: var(--shadow); }
+}  
   </style>
 </head>
 <body>
