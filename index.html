@@ -52,9 +52,7 @@
     .hero p{max-width:780px;opacity:.92;margin:6px 0 0}
     .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:14px}
 
-    .sound-toggle{position:absolute;right:18px;bottom:18px;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;background:rgba(255,255,255,.9);color:#111;border:1px solid #0000001a;cursor:pointer;font-weight:600}
-    .sound-toggle:hover{box-shadow:var(--shadow)}
-
+  
     /* Sections */
     section{padding:72px 0}
     .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
@@ -614,7 +612,7 @@
 @media (prefers-reduced-motion: reduce){
   .glow-in{ transform:none; }
 }
-    /* === Little toast notification for the contact form === */
+/* === Little toast notification for the contact form === */
 .toast{
   position: fixed;
   right: 16px;
@@ -951,33 +949,41 @@
     document.addEventListener('visibilitychange', ()=>{ if(document.hidden) { video.muted = true; updateSoundUI(); } });
     updateSoundUI();
 
-    // ====== Web3Forms enhanced UX (optional) ======
-    const form = document.getElementById('contactForm');
-    const success = document.getElementById('success');
-    const error = document.getElementById('error');
+    // ====== Web3Forms: submit without leaving the page (toast message)
+const form = document.getElementById('contactForm');
+const toast = document.getElementById('toast');
 
-    form.addEventListener('submit', async (e) => {
-      // Comment out next line if you prefer default POST redirect behavior
-      e.preventDefault();
-      success.style.display = 'none';
-      error.style.display = 'none';
+function showToast(msg, isError=false){
+  if(!toast) return;
+  toast.textContent = msg;
+  toast.classList.remove('error');
+  if(isError) toast.classList.add('error');
+  toast.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=> toast.classList.remove('show'), 3500);
+}
 
-      const data = new FormData(form);
-      try{
-        const resp = await fetch(form.action, { method: 'POST', body: data });
-        const json = await resp.json();
-        if(json.success){
-          success.style.display = 'block';
-          form.reset();
-        } else {
-          throw new Error(json.message || 'Submission failed');
-        }
-      } catch(err){
-        console.error(err);
-        error.style.display = 'block';
+if (form){
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();  // <-- stops page redirect
+    const data = new FormData(form);
+    try{
+      const resp = await fetch(form.action, { method: 'POST', body: data });
+      const json = await resp.json();
+      if(json.success){
+        showToast("Thank you — your message has been sent. We’ll get back to you shortly.");
+        form.reset();
+      } else {
+        throw new Error(json.message || 'Submission failed');
       }
-    });
-  // ====== Mobile hamburger toggle ======
+    } catch(err){
+      console.error(err);
+      showToast("Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.", true);
+    }
+  });
+}
+
+// ====== Mobile hamburger toggle
 const navToggle = document.getElementById('navToggle');
 const navLinksEl = document.getElementById('primary-navigation');
 if (navToggle && navLinksEl){
@@ -985,28 +991,23 @@ if (navToggle && navLinksEl){
     const isOpen = navLinksEl.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
-}  
-    // === Scroll-into-view glow (works on desktop + mobile) ===
-(function(){
-  // Skip if user prefers reduced motion
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+}
 
+// === Scroll-into-view glow (works on desktop + mobile)
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const targets = document.querySelectorAll('#services .card, #testimonials .t, #our-story .tl-card');
   if (!('IntersectionObserver' in window) || !targets.length) return;
-
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
         el.classList.add('glow-in');
-        // keep the glow briefly, then fade back
         setTimeout(() => el.classList.remove('glow-in'), 800);
-        // trigger only once per element
         obs.unobserve(el);
       }
     });
-  }, { threshold: 0.25 }); // ~25% visible
-
+  }, { threshold: 0.25 });
   targets.forEach(el => io.observe(el));
 })();
   </script>
@@ -1028,7 +1029,7 @@ if (navToggle && navLinksEl){
   4) Footer socials: Update the three hrefs to your exact Google review page, Facebook and Instagram.
   5) Colours & spacing follow your beige/taupe brief. Adjust in :root if needed.
   -->
-  <!-- Small pop-up message for the contact form -->
+<!-- Small pop-up message for the contact form -->
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
