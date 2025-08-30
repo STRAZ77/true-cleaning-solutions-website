@@ -614,6 +614,25 @@
 @media (prefers-reduced-motion: reduce){
   .glow-in{ transform:none; }
 }
+    /* === Little toast notification for the contact form === */
+.toast{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: #1f5135;           /* green = success */
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease;
+  font-size: .95rem;
+}
+.toast.error{ background:#7b2222; }  /* red = error */
+.toast.show{ opacity:1; transform: translateY(0); }
   </style>
 </head>
 <body>
