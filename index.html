@@ -150,13 +150,20 @@
     #services .card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background: radial-gradient(80% 60% at 100% 0%, rgba(199,165,122,.18), transparent 60%);opacity:0;transition:opacity .35s ease;}
     #services .card:hover::after{opacity:1}
 
-    /* Our story */
-    .story{background:var(--bg-2);}
-    .story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:center;}
-    .frame{background:var(--surface);border:1px solid #00000010;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);max-width:460px;}
-    .frame-inner{aspect-ratio:4/5;border-radius:calc(var(--radius) - 6px);overflow:hidden;background:#ddd;}
-    .frame-inner img{width:100%;height:100%;object-fit:cover;}
-    .story-text p{color:var(--muted);margin:0 0 1rem 0}
+    /* Our Story banner (full width) */
+.story-banner {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.story-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
 
     /* Timeline */
     .timeline{margin-top:32px}
@@ -360,14 +367,8 @@
           <span class="pill">Family-run • Milton Keynes</span>
         </div>
 
-        <div class="story-grid">
-          <!-- Selfie frame -->
-          <div class="frame">
-            <div class="frame-inner">
-              <img src="assets/our-story.jpg" alt="Georgi — True Cleaning Solutions" loading="lazy">
-            </div>
-          </div>
-          
+        <div class="story-banner">
+           <img src="assets/our-story.jpg" alt="Our Story — True Cleaning Solutions" loading="lazy">
         </div>
 
         <!-- Timeline -->
