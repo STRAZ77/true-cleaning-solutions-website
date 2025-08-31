@@ -1,13 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>True Cleaning Solutions | Commercial & Residential Cleaning in Milton Keynes</title>
   <meta name="description" content="True Cleaning Solutions (TCS) – reliable commercial & residential cleaning in Milton Keynes. Trusted teams, flexible schedules, spotless results." />
+
+  <!-- Canonical + Icons -->
+  <link rel="canonical" href="https://truecleaningsolutions.co.uk/">
+  <link rel="icon" href="/assets/favicon.ico">
+
+  <!-- Social cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="True Cleaning Solutions | Commercial & Residential Cleaning in Milton Keynes">
+  <meta property="og:description" content="Reliable cleaning in Milton Keynes. Trusted teams, flexible schedules, spotless results.">
+  <meta property="og:url" content="https://truecleaningsolutions.co.uk/">
+  <meta property="og:image" content="https://truecleaningsolutions.co.uk/assets/hero-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="True Cleaning Solutions">
+  <meta name="twitter:description" content="Commercial & Residential Cleaning in Milton Keynes">
+  <meta name="twitter:image" content="https://truecleaningsolutions.co.uk/assets/hero-poster.jpg">
+
+  <!-- Optional: CSP (report-only starter). Uncomment to test, then move to headers if you have a proxy. -->
+  <!--
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' https: data:;
+                 media-src 'self' https:;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com data:;
+                 script-src 'self';
+                 connect-src https://api.web3forms.com;
+                 base-uri 'self'; form-action https://api.web3forms.com; frame-ancestors 'none'; upgrade-insecure-requests">
+  -->
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CleaningService",
+    "name": "True Cleaning Solutions",
+    "image": "https://truecleaningsolutions.co.uk/assets/hero-poster.jpg",
+    "url": "https://truecleaningsolutions.co.uk/",
+    "telephone": "+44",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Milton Keynes",
+      "addressCountry": "GB"
+    },
+    "areaServed": "Milton Keynes",
+    "priceRange": "££",
+    "sameAs": [
+      "https://instagram.com/truecleaningsolutions",
+      "https://www.facebook.com/profile.php?id=61553856447021"
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --bg:#f3efe9;           /* warm beige */
@@ -17,7 +71,7 @@
       --brand:#c7a57a;        /* soft gold accent */
       --brand-2:#b59369;      /* darker accent */
       --surface:#ffffff;      /* cards */
-      --ring: 0 0 0 4px rgba(199,165,122,.2);
+      --ring: 0 0 0 4px rgba(199,165,122,.35);
       --radius: 16px;
       --shadow: 0 10px 30px rgba(34,25,5,0.08);
     }
@@ -30,6 +84,15 @@
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
     .btn.ghost{background:transparent;color:var(--ink);border-color:#00000022}
     .pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-2);border:1px solid #00000012;border-radius:999px;padding:.35rem .7rem;font-size:.85rem;color:var(--muted)}
+    .btn:focus-visible, .icon-btn:focus-visible, .nav-toggle:focus-visible, a:focus-visible { outline: none; box-shadow: var(--ring); }
+
+    /* Skip link reveal */
+    a.sr-only:focus {
+      position: static; width: auto; height:auto; margin: 8px;
+      clip: auto; white-space: normal; padding: 8px 10px;
+      background:#fff; border-radius:10px; border:1px solid #00000022;
+      box-shadow: var(--shadow);
+    }
 
     /* Header */
     header{position:sticky;top:0;z-index:40;background:rgba(243,239,233,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #00000010}
@@ -42,8 +105,8 @@
     .nav-links a:hover{background:#00000008;color:var(--ink)}
     
     /* Hero */
-    .hero{position:relative;isolation:isolate}
-    .hero-media{position:relative;height:min(72vh,720px);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;background:#000}
+    .hero{position:relative;isolation:isolate; padding-top: 0 !important;}
+    .hero-media{position:relative;height:min(72vh,720px);border-radius:0;overflow:hidden;background:#000}
     .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .noise{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, rgba(0,0,0,.05), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.45));mix-blend:overlay}
     .hero-overlay{position:absolute;inset:auto 0 0 0;padding:32px 20px 24px;background:linear-gradient(180deg, transparent, rgba(0,0,0,.55));color:#fff}
@@ -51,8 +114,9 @@
     .hero h2{font-size:clamp(1.8rem, 2.8vw + 1rem, 3rem);margin:8px 0 0}
     .hero p{max-width:780px;opacity:.92;margin:6px 0 0}
     .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:14px}
+    .hero-ctas .btn.ghost{background:#fff !important;color:var(--ink) !important;border-color:#fff !important}
+    .hero-ctas .btn.ghost:hover{background:#fff !important;box-shadow:var(--shadow);transform:translateY(-1px)}
 
-  
     /* Sections */
     section{padding:72px 0}
     .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
@@ -60,107 +124,75 @@
     .grid{display:grid;gap:18px}
 
     /* Services */
-  /* Services visual box (responsive) */
-.svc-frame{
-  background: var(--surface);
-  border: 1px solid #00000010;
-  border-radius: var(--radius);
-  padding: 10px;
-  box-shadow: var(--shadow);
-  margin-bottom: 18px;          /* space above the service cards */
-}
-.svc-inner{
-  aspect-ratio: 4/5;           /* wide box, scales with screen */
-  border-radius: calc(var(--radius) - 6px);
-  overflow: hidden;
-  background: #ddd;
-}
-.svc-inner img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;            /* keeps it nicely cropped */
-}
+    .svc-frame{
+      background: transparent !important;
+      border: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      margin-bottom: 18px;
+    }
+    .svc-inner{
+      aspect-ratio: auto !important;
+      min-height: 0 !important;
+      border-radius: 0 !important;
+      overflow: hidden;
+      background: transparent !important;
+    }
+    .svc-inner img{ width:100%; height:auto !important; object-fit:cover; }
+
     .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid #00000010;box-shadow:var(--shadow)}
+    .card{background:rgba(255,255,255,0.55);border-radius:var(--radius);padding:20px;border:1px solid rgba(255,255,255,0.40);box-shadow:var(--shadow);position:relative;overflow:hidden;-webkit-backdrop-filter: blur(10px) saturate(140%);backdrop-filter: blur(10px) saturate(140%);transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s, background-color .35s; transform: translateZ(0)}
     .card h4{margin:.5rem 0 .25rem;font-size:1.1rem}
     .card p{margin:0;color:var(--muted)}
-/* Our story */
-.story{background:var(--bg-2);}
-.story-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-  align-items:center;
-}
-.frame{
-  background:var(--surface);
-  border:1px solid #00000010;
-  border-radius:var(--radius);
-  padding:10px;
-  box-shadow:var(--shadow);
-  max-width:460px;
-}
-.frame-inner{
-  aspect-ratio:4/5;          /* tall portrait shape */
-  border-radius:calc(var(--radius) - 6px);
-  overflow:hidden;
-  background:#ddd;
-}
-.frame-inner img{
-  width:100%;height:100%;object-fit:cover;
-}
-.story-text p{color:var(--muted);margin:0}
+    #services .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(34,25,5,0.14);border-color: rgba(199,165,122,0.55)}
+    #services .card::before{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;background: linear-gradient(75deg, transparent 0%, rgba(255,255,255,.5) 50%, transparent 100%);transform: skewX(-20deg) translateX(-120%);transition: transform .7s ease;pointer-events:none;}
+    #services .card:hover::before{transform: skewX(-20deg) translateX(260%);}
+    #services .card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background: radial-gradient(80% 60% at 100% 0%, rgba(199,165,122,.18), transparent 60%);opacity:0;transition:opacity .35s ease;}
+    #services .card:hover::after{opacity:1}
 
-/* Timeline */
-.timeline{margin-top:32px}
-.tl{position:relative}
-.tl:before{
-  content:"";
-  position:absolute;
-  left:12px; top:0; bottom:0;
-  width:2px; background:#0000001a;
-}
-.tl-item{
-  position:relative;
-  display:grid;
-  grid-template-columns:40px 1fr;
-  gap:14px;
-  margin:16px 0;
-}
-.tl-dot{
-  width:14px;height:14px;border-radius:50%;
-  background:var(--brand);
-  border:2px solid #fff;
-  box-shadow:0 0 0 3px rgba(199,165,122,.25);
-  position:relative; top:4px;
-}
-.tl-card{
-  background:var(--surface);
-  border:1px solid #00000010;
-  border-radius:var(--radius);
-  padding:14px;
-  box-shadow:var(--shadow);
-}
-.tl-card .tl-year{font-weight:700;color:var(--muted);margin-bottom:6px}
-.tl-card h4{margin:0 0 4px 0;font-size:1rem}
-.tl-card p{margin:0;color:var(--muted)}
+    /* Our story */
+    .story{background:var(--bg-2);}
+    .story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:center;}
+    .frame{background:var(--surface);border:1px solid #00000010;border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);max-width:460px;}
+    .frame-inner{aspect-ratio:4/5;border-radius:calc(var(--radius) - 6px);overflow:hidden;background:#ddd;}
+    .frame-inner img{width:100%;height:100%;object-fit:cover;}
+    .story-text p{color:var(--muted);margin:0 0 1rem 0}
+
+    /* Timeline */
+    .timeline{margin-top:32px}
+    .tl{position:relative}
+    .tl:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:#0000001a;}
+    .tl-item{position:relative;display:grid;grid-template-columns:40px 1fr;gap:14px;margin:16px 0;}
+    .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--brand);border:2px solid #fff;box-shadow:0 0 0 3px rgba(199,165,122,.25);position:relative;top:4px;}
+    .tl-card{background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.40);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);position:relative;overflow:hidden;-webkit-backdrop-filter: blur(10px) saturate(140%);backdrop-filter: blur(10px) saturate(140%);transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s, background-color .35s;}
+    .tl-card .tl-year{font-weight:700;color:var(--muted);margin-bottom:6px}
+    .tl-card h4{margin:0 0 4px 0;font-size:1rem}
+    .tl-card p{margin:0;color:var(--muted)}
+    #our-story .tl-item:hover .tl-card{transform:translateY(-6px);box-shadow:0 16px 40px rgba(34,25,5,0.14);border-color: rgba(199,165,122,0.55)}
+    #our-story .tl-card::before{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;background: linear-gradient(75deg, transparent 0%, rgba(255,255,255,.5) 50%, transparent 100%);transform: skewX(-20deg) translateX(-120%);transition: transform .7s ease;pointer-events:none;}
+    #our-story .tl-item:hover .tl-card::before{transform: skewX(-20deg) translateX(260%);}
+    #our-story .tl-item:hover .tl-dot{box-shadow:0 0 0 6px rgba(199,165,122,.25);}
 
     /* Testimonials */
     .testimonials{background:var(--bg-2)}
     .t-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .t{background:var(--surface);border:1px solid #00000010;border-radius:var(--radius);padding:20px;display:grid;gap:14px}
+    .t{background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.40);border-radius:var(--radius);padding:20px;display:grid;gap:14px;position:relative;overflow:hidden;-webkit-backdrop-filter: blur(10px) saturate(140%);backdrop-filter: blur(10px) saturate(140%);transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s, background-color .35s}
     .person{display:flex;align-items:center;gap:12px}
     .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #ffffff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .person b{display:block}
     .stars{font-size:15px;color:#e2b66a;letter-spacing:2px}
+    #testimonials .t:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(34,25,5,0.14);border-color: rgba(199,165,122,0.55)}
+    #testimonials .t::before{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;background: linear-gradient(75deg, transparent 0%, rgba(255,255,255,.5) 50%, transparent 100%);transform: skewX(-20deg) translateX(-120%);transition: transform .7s ease;pointer-events:none;}
+    #testimonials .t:hover::before{transform: skewX(-20deg) translateX(260%);}
+    #testimonials .t::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background: radial-gradient(80% 60% at 100% 0%, rgba(199,165,122,.18), transparent 60%);opacity:0;transition:opacity .35s ease;}
+    #testimonials .t:hover::after{opacity:1;}
 
     /* Contact */
     form{display:grid;gap:12px}
     input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #00000022;background:#fff;color:var(--ink);font-size:1rem}
     textarea{min-height:120px}
     .hint{font-size:.9rem;color:var(--muted)}
-    .success{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#e6f7ed;border:1px solid #7ad4a4;color:#1f5135}
-    .error{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#fde8e8;border:1px solid #f5a6a6;color:#7b2222}
+    .success,.error{display:none}
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid #00000010;background:#fff}
@@ -172,474 +204,78 @@
 
     /* Utility */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  /* === Frosted glass cards in Our services === */
-#services .card{
-  /* semi-transparent white so the wallpaper peeks through */
-  background: rgba(255, 255, 255, 0.55);
-  /* blur/saturate whatever is behind the card */
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  /* softer border for glassy edge */
-  border: 1px solid rgba(255, 255, 255, 0.40);
-  /* keep your rounded corners & shadow gentle */
-  border-radius: var(--radius);
-  box-shadow: 0 10px 30px rgba(34,25,5,0.06);
-}
 
-/* optional: make the section’s background image visible if you added one */
-#services{
-  /* if you already set a background for #services, you can ignore this */
-  /* Example wallpaper line (safe to keep or adjust): */
-  /* background:
-    linear-gradient(to bottom, rgba(243,239,233,0.92), rgba(243,239,233,0.92)),
-    url("assets/services-bg.jpg") center/cover no-repeat; */
-}
-  /* === Our services: 2-column layout with a right-side visual box === */
-#services .container{
-  display: grid;
-  grid-template-columns: 1fr min(38ch, 420px); /* left = content, right = picture box */
-  gap: 24px;
-  align-items: start;
-}
+    /* Layout tweaks for services section columns */
+    #services .container{display:grid;grid-template-columns:1fr min(38ch, 420px);gap:24px;align-items:start;}
+    #services .section-head, #services .cards{grid-column:1;}
+    #services .svc-frame{grid-column:2;}
+    @media (max-width: 900px){ #services .container{grid-template-columns:1fr;} #services .svc-frame{grid-column:1;} }
 
-/* Keep title + cards in the LEFT column */
-#services .section-head,
-#services .cards{
-  grid-column: 1;
-}
+    /* Mobile header fixes + hamburger */
+    .nav-toggle{ display:none; }
+    @media (max-width: 768px){
+      header .nav{display:flex;flex-wrap:wrap;height:auto;padding:8px 0;row-gap:8px;}
+      .brand{ flex: 1; display:flex; align-items:center; gap:.5rem; }
+      .brand img.logo{ width: 40px; height: 40px; }
+      .brand h1{ max-width:100% !important; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; font-size:1.05rem; line-height:1.2; margin:0; }
+      .nav-toggle{
+        display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;margin-left:auto;border-radius:10px;border:1px solid #00000022;background:#fff;font-size:20px;font-weight:700;cursor:pointer;
+        appearance:none;-webkit-appearance:none;background:transparent !important;border:0 !important;box-shadow:none !important;color:var(--muted) !important;
+      }
+      .nav-toggle:focus{ outline: none; box-shadow: var(--ring); }
+      .nav-links{ width:100%; display:none; flex-direction:column; gap:8px; padding:8px 0; }
+      .nav-links a{ padding:12px 12px; border-radius:12px; background:rgba(255,255,255,0.60); border:1px solid rgba(0,0,0,0.08); -webkit-backdrop-filter: blur(10px) saturate(140%); backdrop-filter: blur(10px) saturate(140%); }
+      .nav-links.open{ display:flex; }
+    }
 
-/* Picture box styles (RIGHT column) */
-#services .svc-frame{
-  grid-column: 2;
-  background: var(--surface);
-  border: 1px solid #00000010;
-  border-radius: var(--radius);
-  padding: 10px;
-  box-shadow: var(--shadow);
-}
-#services .svc-inner{
-  aspect-ratio: 16 / 9;           /* responsive box that scales with screen */
-  border-radius: calc(var(--radius) - 6px);
-  overflow: hidden;
-  background: #ddd;
-}
-#services .svc-inner img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;               /* nice crop */
-}
+    /* Mobile: tap feedback for cards */
+    @media (hover: none) and (pointer: coarse){
+      #services .card, #testimonials .t, #our-story .tl-card{ cursor: pointer; }
+      #services .card:active, #services .card:focus-visible, #services .card:focus-within,
+      #testimonials .t:active, #testimonials .t:focus-visible, #testimonials .t:focus-within,
+      #our-story .tl-item:active .tl-card, #our-story .tl-item:focus-within .tl-card{
+        transform: translateY(-6px); box-shadow: 0 16px 40px rgba(34,25,5,0.14); border-color: rgba(199,165,122,0.55);
+      }
+      #services .card:active::before, #testimonials .t:active::before, #our-story .tl-item:active .tl-card::before{
+        transform: skewX(-20deg) translateX(260%); transition: transform .7s ease;
+      }
+    }
 
-/* Mobile: stack into one column, picture goes beneath content */
-@media (max-width: 900px){
-  #services .container{ grid-template-columns: 1fr; }
-  #services .svc-frame{ grid-column: 1; }
-}  
-/* === Remove frame around the services picture, keep it on the right === */
-#services .svc-frame{
-  background: transparent !important;
-  border: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
+    /* Scroll-in glow (respect reduced motion) */
+    #services .card, #testimonials .t, #our-story .tl-card{ transition: box-shadow .45s ease, border-color .45s ease, transform .45s ease; will-change: box-shadow, transform; }
+    .glow-in{ transform: translateY(-4px); box-shadow: 0 16px 40px rgba(34,25,5,0.14); border-color: rgba(199,165,122,0.55) !important; }
+    @media (prefers-reduced-motion: reduce){ .glow-in{ transform:none; } }
 
-#services .svc-inner{
-  background: transparent !important;
-  border-radius: 0 !important;  /* no rounded edges */
-  /* keep your current aspect-ratio so size stays the same */
-}
-
-/* keep the image filling the box nicely */
-#services .svc-inner img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-/* OPTIONAL: let the image use its natural height (no fixed aspect) */
-#services .svc-inner{
-  aspect-ratio: auto !important;
-  min-height: 0 !important;
-}
-#services .svc-inner img{
-  height: auto !important;   /* stop stretching */
-}
-  /* === Hover visuals for Our services cards (LIPSMK-style) === */
-#services .card{
-  position: relative;
-  overflow: hidden;
-  background: rgba(255,255,255,0.55);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255,255,255,0.40);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1),
-              box-shadow .35s, border-color .35s, background-color .35s;
-  transform: translateZ(0); /* smooth GPU */
-}
-
-/* lift + glow */
-#services .card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
-  border-color: rgba(199,165,122,0.55); /* brand glow */
-}
-
-/* sheen sweep across the card */
-#services .card::before{
-  content:"";
-  position:absolute; top:0; left:-60%;
-  width:50%; height:100%;
-  background: linear-gradient(75deg, transparent 0%,
-             rgba(255,255,255,.5) 50%, transparent 100%);
-  transform: skewX(-20deg) translateX(-120%);
-  transition: transform .7s ease;
-  pointer-events:none;
-}
-#services .card:hover::before{
-  transform: skewX(-20deg) translateX(260%);
-}
-
-/* subtle corner glow on hover */
-#services .card::after{
-  content:"";
-  position:absolute; inset:0; pointer-events:none;
-  border-radius: inherit;
-  background: radial-gradient(80% 60% at 100% 0%,
-             rgba(199,165,122,.18), transparent 60%);
-  opacity: 0; transition: opacity .35s ease;
-}
-#services .card:hover::after{ opacity: 1; }
-
-/* accessibility: reduce motion if user prefers */
-@media (prefers-reduced-motion: reduce){
-  #services .card,
-  #services .card::before,
-  #services .card::after{ transition: none; }
-  #services .card:hover{ transform:none; box-shadow: var(--shadow); }
-}  
-  /* === Hover visuals for TESTIMONIALS cards (match Services style) === */
-#testimonials .t{
-  position: relative;
-  overflow: hidden;
-  background: rgba(255,255,255,0.55);            /* frosted glass */
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255,255,255,0.40);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1),
-              box-shadow .35s, border-color .35s, background-color .35s;
-  transform: translateZ(0);
-}
-#testimonials .t:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
-  border-color: rgba(199,165,122,0.55);          /* warm brand glow */
-}
-/* sheen sweep */
-#testimonials .t::before{
-  content:"";
-  position:absolute; top:0; left:-60%;
-  width:50%; height:100%;
-  background: linear-gradient(75deg, transparent 0%,
-             rgba(255,255,255,.5) 50%, transparent 100%);
-  transform: skewX(-20deg) translateX(-120%);
-  transition: transform .7s ease;
-  pointer-events:none;
-}
-#testimonials .t:hover::before{
-  transform: skewX(-20deg) translateX(260%);
-}
-/* subtle corner glow */
-#testimonials .t::after{
-  content:"";
-  position:absolute; inset:0; pointer-events:none;
-  border-radius: inherit;
-  background: radial-gradient(80% 60% at 100% 0%,
-             rgba(199,165,122,.18), transparent 60%);
-  opacity: 0; transition: opacity .35s ease;
-}
-#testimonials .t:hover::after{ opacity: 1; }
-
-/* === Hover visuals for OUR STORY timeline cards === */
-/* Safe to paste even if the Our story section isn’t added yet. */
-#our-story .tl-card{
-  position: relative;
-  overflow: hidden;
-  background: rgba(255,255,255,0.55);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255,255,255,0.40);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1),
-              box-shadow .35s, border-color .35s, background-color .35s;
-}
-#our-story .tl-item:hover .tl-card{
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
-  border-color: rgba(199,165,122,0.55);
-}
-/* sheen sweep on the card */
-#our-story .tl-card::before{
-  content:"";
-  position:absolute; top:0; left:-60%;
-  width:50%; height:100%;
-  background: linear-gradient(75deg, transparent 0%,
-             rgba(255,255,255,.5) 50%, transparent 100%);
-  transform: skewX(-20deg) translateX(-120%);
-  transition: transform .7s ease;
-  pointer-events:none;
-}
-#our-story .tl-item:hover .tl-card::before{
-  transform: skewX(-20deg) translateX(260%);
-}
-/* make the timeline dot glow a bit on hover */
-#our-story .tl-item:hover .tl-dot{
-  box-shadow: 0 0 0 6px rgba(199,165,122,.25);
-}
-
-/* Accessibility: reduce motion if user prefers */
-@media (prefers-reduced-motion: reduce){
-  #testimonials .t,
-  #testimonials .t::before,
-  #testimonials .t::after,
-  #our-story .tl-card,
-  #our-story .tl-card::before{ transition: none; }
-  #testimonials .t:hover,
-  #our-story .tl-item:hover .tl-card{ transform:none; box-shadow: var(--shadow); }
-} 
-  /* === Mobile header fix: prevent title/menu overlap === */
-@media (max-width: 768px){
-  header .nav{
-    display: flex;
-    flex-wrap: wrap;        /* allow to break into 2 rows */
-    height: auto;           /* override fixed 72px height */
-    padding: 8px 0;
-    row-gap: 8px;
-  }
-  .brand img.logo{ width: 40px; height: 40px; }
-  .brand h1{
-    font-size: 0.95rem;     /* smaller title on phones */
-    line-height: 1.1;
-    margin: 0;
-    max-width: 70%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;/* trims if super long */
-  }
-  .nav-links{
-    width: 100%;            /* push menu to its own row */
-    justify-content: space-between;
-    gap: .5rem;
-    font-size: .95rem;
-  }
-  .nav-links a{ padding: .45rem .6rem; }
-}
-
-/* If your phone is very small, hide the text title but keep the logo */
-@media (max-width: 380px){
-  .brand h1{ display: none; }
-} 
-  /* === Mobile header: show full title, no ellipsis === */
-@media (max-width: 768px){
-  header .nav{
-    display: flex;
-    flex-wrap: wrap;    /* allow two rows: title on row 1, menu on row 2 */
-    height: auto;
-    padding: 8px 0;
-    row-gap: 8px;
-  }
-
-  .brand{ gap: .5rem; } /* tighten logo–title spacing */
-
-  .brand h1{
-    max-width: 100% !important;     /* remove old 70% cap */
-    white-space: normal !important;  /* allow wrapping */
-    overflow: visible !important;    /* no clipping */
-    text-overflow: initial !important; /* no "..." */
-    font-size: 1.05rem;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .nav-links{
-    width: 100%;                    /* push menu to its own row */
-    justify-content: space-between;
-    gap: .5rem;
-    font-size: .95rem;
-  }
-}
-
-/* For very tiny phones, we can still hide the title if needed (optional)
-@media (max-width: 360px){
-  .brand h1{ display:none; }
-}
-*/
-  /* === Mobile hamburger menu (phones only) === */
-.nav-toggle{ display:none; } /* hidden on desktop */
-
-@media (max-width: 768px){
-  header .nav{
-    display: flex;
-    flex-wrap: wrap;        /* two rows allowed */
-    height: auto;
-    padding: 8px 0;
-    row-gap: 8px;
-  }
-
-  .brand{ flex: 1; display:flex; align-items:center; gap:.5rem; }
-  .brand h1{
-    max-width: 100% !important;
-    white-space: normal !important;   /* allow wrapping */
-    overflow: visible !important;
-    text-overflow: clip !important;
-    font-size: 1.05rem;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  /* show hamburger on the right */
-  .nav-toggle{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    margin-left: auto;              /* pushes it to the right */
-    border-radius: 10px;
-    border: 1px solid #00000022;
-    background: #fff;
-    font-size: 20px; font-weight: 700;
-    cursor: pointer;
-  }
-  .nav-toggle:focus{ outline: none; box-shadow: var(--ring); }
-
-  /* collapse menu into a vertical list */
-  .nav-links{
-    width: 100%;
-    display: none;                  /* hidden until toggled */
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px 0;
-  }
-  .nav-links a{
-    padding: 12px 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.60);         /* frosted look */
-    border: 1px solid rgba(0,0,0,0.08);
-    -webkit-backdrop-filter: blur(10px) saturate(140%);
-    backdrop-filter: blur(10px) saturate(140%);
-  }
-  .nav-links.open{ display: flex; }  /* show when toggled */
-} 
-  /* === Make the hero sit directly under the header (no top gap) === */
-.hero{ padding-top: 0 !important; }
-
-/* Optional: if you want ZERO space above and below the hero, use this instead:
-.hero{ padding: 0 !important; }
-*/
-    /* === Mobile hamburger look: transparent button + grey lines === */
-@media (max-width: 768px){
-  .nav-toggle{
-    appearance: none;
-    -webkit-appearance: none;
-    background: transparent !important;  /* no box */
-    border: 0 !important;                 /* no border */
-    box-shadow: none !important;          /* no shadow */
-    color: var(--muted) !important;       /* grey ☰ from your theme */
-    /* fallback grey if vars fail */
-    color: #6d645d !important;
-  }
-  .nav-toggle:focus{
-    outline: none;
-    box-shadow: var(--ring);              /* keep nice focus ring */
-  }
-}
-    /* === Hero: straight bottom corners === */
-.hero-media{
-  border-radius: 0 !important;  /* remove the rounded bottom corners */
-}
-  /* === Hero secondary button: white background === */
-.hero-ctas .btn.ghost{
-  background: #fff !important;
-  color: var(--ink) !important;
-  border-color: #fff !important;
-}
-.hero-ctas .btn.ghost:hover{
-  background: #fff !important;   /* keep it white on hover */
-  box-shadow: var(--shadow);
-  transform: translateY(-1px);
-}  
-    /* === Mobile: show card effect on tap (since :hover doesn't exist) === */
-@media (hover: none) and (pointer: coarse){
-  /* make cards “tap-able” so :active triggers reliably */
-  #services .card,
-  #testimonials .t,
-  #our-story .tl-card{ cursor: pointer; }
-
-  /* lift + glow on tap/focus */
-  #services .card:active,
-  #services .card:focus-visible,
-  #services .card:focus-within,
-  #testimonials .t:active,
-  #testimonials .t:focus-visible,
-  #testimonials .t:focus-within,
-  #our-story .tl-item:active .tl-card,
-  #our-story .tl-item:focus-within .tl-card{
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(34,25,5,0.14);
-    border-color: rgba(199,165,122,0.55);
-  }
-
-  /* run the sheen sweep while pressed */
-  #services .card:active::before,
-  #testimonials .t:active::before,
-  #our-story .tl-item:active .tl-card::before{
-    transform: skewX(-20deg) translateX(260%);
-    transition: transform .7s ease;
-  }
-}
-    /* === Subtle glow when cards scroll into view === */
-#services .card,
-#testimonials .t,
-#our-story .tl-card{
-  transition: box-shadow .45s ease, border-color .45s ease, transform .45s ease;
-  will-change: box-shadow, transform; /* smoother animation */
-}
-
-/* the temporary glow state */
-.glow-in{
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(34,25,5,0.14);
-  border-color: rgba(199,165,122,0.55) !important; /* warm brand glow */
-}
-
-/* Respect users who prefer less motion */
-@media (prefers-reduced-motion: reduce){
-  .glow-in{ transform:none; }
-}
-/* === Little toast notification for the contact form === */
-.toast{
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  background: #1f5135;           /* green = success */
-  color: #fff;
-  padding: 12px 14px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity .25s ease, transform .25s ease;
-  font-size: .95rem;
-}
-.toast.error{ background:#7b2222; }  /* red = error */
-.toast.show{ opacity:1; transform: translateY(0); }
+    /* Toast */
+    .toast{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      background: #1f5135;           /* green = success */
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .25s ease, transform .25s ease;
+      font-size: .95rem;
+    }
+    .toast.error{ background:#7b2222; }  /* red = error */
+    .toast.show{ opacity:1; transform: translateY(0); }
   </style>
 </head>
 <body>
+  <!-- Skip link -->
+  <a class="sr-only" href="#main">Skip to content</a>
+
   <!-- ======================= HEADER ======================= -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Replace src with your final transparent PNG/SVG logo -->
-        <img class="logo" src="assets/tcs-logo@2x.png" alt="True Cleaning Solutions logo" />
+        <img class="logo" src="assets/tcs-logo@2x.png" alt="True Cleaning Solutions logo" width="48" height="48" loading="eager" />
         <h1>True Cleaning Solutions</h1>
       </div>
       <button id="navToggle"
@@ -655,271 +291,265 @@
     </div>
   </header>
 
-  <!-- ======================== HERO ======================== -->
-  <section class="hero" aria-label="Intro">
-    <div class="hero-media">
-      <!-- TIP: Host your MP4 in the repo: assets/hero.mp4  (keep file < 25MB for GitHub). -->
-      <video id="heroVideo" autoplay muted playsinline loop preload="auto" poster="assets/hero-poster.jpg">
-        <source src="assets/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div class="noise" aria-hidden="true"></div>
-      <div class="hero-overlay">
-        <div class="hero-content">
-          <span class="pill">Milton Keynes • Commercial & Residential</span>
-          <h2>Your reliable cleaning partner — Consistent. Trusted. Efficient.</h2>
-          <p>From spotless offices to sparkling homes, we deliver consistent quality with friendly, trained professionals and flexible schedules that fit your life and business.</p>
-          <div class="hero-ctas">
-            <a class="btn" href="#contact">Get a quote</a>
-            <a class="btn ghost" href="#services">See our services</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= SERVICES ===================== -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <h3>Our services</h3>
-        <span class="pill">Reliable • Fully insured • Vetted staff</span>
-      </div>
-      <div class="grid cards">
-        <article class="card">
-          <h4>🏢 Commercial Cleaning</h4>
-          <p>From small offices to shared workspaces, we keep professional environments looking sharp and feeling fresh. Impress clients, support your team, and maintain a healthier workplace — without the hassle.</p>
-        </article>
-        <article class="card">
-          <h4>🗓️ Weekly & Fortnightly Cleans</h4>
-          <p>Keep your home fresh, tidy, and stress-free all year round. Our recurring cleaning service ensures every surface stays shining — whether you prefer weekly or every other week. Perfect for busy households that love a spotless space without lifting a finger.</p>
-        </article>
-        <article class="card">
-          <h4>📆 Monthly Maintenance Cleans</h4>
-          <p>Our monthly cleaning is ideal for clients who want a deep refresh without the commitment of weekly visits. We arrive on schedule each month to handle the details and give your home the reset it deserves — no reminders needed.</p>
-        </article>
-        <article class="card">
-          <h4>🧽 One-Time Deep Cleans</h4>
-          <p>Whether it’s spring cleaning, post-party, pre-guests, or end-of-tenancy — we’re ready to roll up our sleeves and bring your space back to life. No commitment required, just a sparkling result.</p>
-        </article>
-        <article class="card">
-          <h4>🛠️ After-Build & Post-Construction Cleaning</h4>
-          <p>We take the dust, debris, and post-renovation mess off your hands. Our detailed after-build cleans are perfect for homeowners, developers, or businesses ready to unveil their newly finished space.</p>
-        </article>
-      </div>
-      <!-- Right-side visual box for Our services -->
-<div class="svc-frame" aria-label="Our services visual">
-  <div class="svc-inner">
-    <!-- Use your real image. If you haven't uploaded it yet, name it exactly services-visual.jpg -->
-    <img src="assets/services-visual.jpg" alt="True Cleaning Solutions — Our services">
-  </div>
-</div>
-    </div>
-  </section>
-  <!-- ======================= OUR STORY ===================== -->
-  <section id="our-story" class="story">
-    <div class="container">
-      <div class="section-head">
-        <h3>Our story</h3>
-        <span class="pill">Family-run • Milton Keynes</span>
-      </div>
-
-      <div class="story-grid">
-        <!-- Selfie frame -->
-        <div class="frame">
-          <div class="frame-inner">
-            <!-- Replace the file below if you used a different name -->
-            <img src="assets/our-story.jpg" alt="Georgi — True Cleaning Solutions">
-          </div>
-        </div>
-
-        <!-- Your story text -->
-        <div class="story-text">
-          <p>I’m Georgi, the person behind True Cleaning Solutions, proudly serving Milton Keynes.
-This all began with a simple promise to myself: treat every space like it’s my own and make people’s lives a little easier at the end of a long day.
-What started as just me, a checklist, and a handful of loyal clients grew purely through recommendations. Word spread, and so did our team—carefully chosen people who share the same standards: be reliable, be respectful, and leave every room better than you found it. We don’t chase shortcuts; we focus on consistency, communication, and those small finishing touches that make you exhale when you walk in.
-Today, we look after busy homes and hard-working businesses across Milton Keynes—from regular domestic cleans to commercial contracts, deep cleans, and end-of-tenancy sparkle. We use professional products (eco-friendly options), follow clear processes, and keep your keys, alarms, and routines safe and confidential. Most of our earliest clients are still with us, which to me says more than any advert ever could.
-If you’re looking for a cleaning team that feels like a trusted partner—not just another supplier—you’re in the right place. We’ll bring the elbow grease and attention to detail; you keep your time for what matters most.
-          </p>Warmly, Georgi Founder, True Cleaning Solutions
-          </p>
-        </div>
-      </div>
-
-      <!-- Timeline -->
-      <div class="timeline">
-        <h4 class="sr-only">Company timeline</h4>
-        <div class="tl">
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2019</div>
-              <h4>First steps</h4>
-              <p>Started serving our first local clients with a simple promise: reliable, friendly, quality cleaning.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2020</div>
-              <h4>Growing by referral</h4>
-              <p>Expanded through word of mouth and introduced checklists to keep results consistent.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2021</div>
-              <h4>Commercial requests</h4>
-              <p>Added regular office contracts in Milton Keynes with secure key holding and supervisor spot-checks.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2022</div>
-              <h4>Team & training</h4>
-              <p>Grew our team and invested in training for deep cleans, end-of-tenancy, and premium finishes.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2023</div>
-              <h4>Refining standards</h4>
-              <p>Introduced quality controls and customer feedback loops to keep our 5★ service consistent.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2024</div>
-              <h4>New services</h4>
-              <p>Launched add-ons like window care, oven cleans, and consumables supply for businesses.</p>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-card">
-              <div class="tl-year">2025</div>
-              <h4>Today</h4>
-              <p>Serving homes and workplaces across MK with integrity, trust, and a personal touch.</p>
+  <main id="main" tabindex="-1">
+    <!-- ======================== HERO ======================== -->
+    <section class="hero" aria-label="Intro">
+      <div class="hero-media">
+        <video id="heroVideo" autoplay muted playsinline loop preload="auto" poster="assets/hero-poster.jpg">
+          <source src="assets/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="noise" aria-hidden="true"></div>
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <span class="pill">Milton Keynes • Commercial & Residential</span>
+            <h2>Your reliable cleaning partner — Consistent. Trusted. Efficient.</h2>
+            <p>From spotless offices to sparkling homes, we deliver consistent quality with friendly, trained professionals and flexible schedules that fit your life and business.</p>
+            <div class="hero-ctas">
+              <a class="btn" href="#contact">Get a quote</a>
+              <a class="btn ghost" href="#services">See our services</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- ==================== TESTIMONIALS ==================== -->
-  <section id="testimonials" class="testimonials">
-    <div class="container">
-      <div class="section-head">
-        <h3>What clients say</h3>
-        <span class="pill">5★ rated on Google</span>
+    </section>
+
+    <!-- ======================= SERVICES ===================== -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h3>Our services</h3>
+          <span class="pill">Reliable • Fully insured • Vetted staff</span>
+        </div>
+        <div class="grid cards">
+          <article class="card">
+            <h4>🏢 Commercial Cleaning</h4>
+            <p>From small offices to shared workspaces, we keep professional environments looking sharp and feeling fresh. Impress clients, support your team, and maintain a healthier workplace — without the hassle.</p>
+          </article>
+          <article class="card">
+            <h4>🗓️ Weekly & Fortnightly Cleans</h4>
+            <p>Keep your home fresh, tidy, and stress-free all year round. Our recurring cleaning service ensures every surface stays shining — whether you prefer weekly or every other week. Perfect for busy households that love a spotless space without lifting a finger.</p>
+          </article>
+          <article class="card">
+            <h4>📆 Monthly Maintenance Cleans</h4>
+            <p>Our monthly cleaning is ideal for clients who want a deep refresh without the commitment of weekly visits. We arrive on schedule each month to handle the details and give your home the reset it deserves — no reminders needed.</p>
+          </article>
+          <article class="card">
+            <h4>🧽 One-Time Deep Cleans</h4>
+            <p>Whether it’s spring cleaning, post-party, pre-guests, or end-of-tenancy — we’re ready to roll up our sleeves and bring your space back to life. No commitment required, just a sparkling result.</p>
+          </article>
+          <article class="card">
+            <h4>🛠️ After-Build & Post-Construction Cleaning</h4>
+            <p>We take the dust, debris, and post-renovation mess off your hands. Our detailed after-build cleans are perfect for homeowners, developers, or businesses ready to unveil their newly finished space.</p>
+          </article>
+        </div>
+        <!-- Right-side visual box for Our services -->
+        <div class="svc-frame" aria-label="Our services visual">
+          <div class="svc-inner">
+            <img src="assets/services-visual.jpg" alt="True Cleaning Solutions — Our services" loading="lazy">
+          </div>
+        </div>
       </div>
-      <div class="grid t-grid">
-        <!-- Replace the src values with your 3 reviewer photos as requested -->
-        <article class="t">
-          <div class="person">
-            <img class="avatar" src="assets/testimonial-1.jpg" alt="Reviewer 1" />
+    </section>
+
+    <!-- ======================= OUR STORY ===================== -->
+    <section id="our-story" class="story">
+      <div class="container">
+        <div class="section-head">
+          <h3>Our story</h3>
+          <span class="pill">Family-run • Milton Keynes</span>
+        </div>
+
+        <div class="story-grid">
+          <!-- Selfie frame -->
+          <div class="frame">
+            <div class="frame-inner">
+              <img src="assets/our-story.jpg" alt="Georgi — True Cleaning Solutions" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Your story text -->
+          <div class="story-text">
+            <p>I’m Georgi, the person behind True Cleaning Solutions, proudly serving Milton Keynes.
+            This all began with a simple promise to myself: treat every space like it’s my own and make people’s lives a little easier at the end of a long day.
+            What started as just me, a checklist, and a handful of loyal clients grew purely through recommendations. Word spread, and so did our team—carefully chosen people who share the same standards: be reliable, be respectful, and leave every room better than you found it. We don’t chase shortcuts; we focus on consistency, communication, and those small finishing touches that make you exhale when you walk in.
+            Today, we look after busy homes and hard-working businesses across Milton Keynes—from regular domestic cleans to commercial contracts, deep cleans, and end-of-tenancy sparkle. We use professional products (eco-friendly options), follow clear processes, and keep your keys, alarms, and routines safe and confidential. Most of our earliest clients are still with us, which to me says more than any advert ever could.
+            If you’re looking for a cleaning team that feels like a trusted partner—not just another supplier—you’re in the right place. We’ll bring the elbow grease and attention to detail; you keep your time for what matters most.</p>
+            <p>Warmly,<br>Georgi<br>Founder, True Cleaning Solutions</p>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <h4 class="sr-only">Company timeline</h4>
+          <div class="tl">
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2019</div>
+                <h4>First steps</h4>
+                <p>Started serving our first local clients with a simple promise: reliable, friendly, quality cleaning.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2020</div>
+                <h4>Growing by referral</h4>
+                <p>Expanded through word of mouth and introduced checklists to keep results consistent.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2021</div>
+                <h4>Commercial requests</h4>
+                <p>Added regular office contracts in Milton Keynes with secure key holding and supervisor spot-checks.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2022</div>
+                <h4>Team & training</h4>
+                <p>Grew our team and invested in training for deep cleans, end-of-tenancy, and premium finishes.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2023</div>
+                <h4>Refining standards</h4>
+                <p>Introduced quality controls and customer feedback loops to keep our 5★ service consistent.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2024</div>
+                <h4>New services</h4>
+                <p>Launched add-ons like window care, oven cleans, and consumables supply for businesses.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-card">
+                <div class="tl-year">2025</div>
+                <h4>Today</h4>
+                <p>Serving homes and workplaces across MK with integrity, trust, and a personal touch.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h3>What clients say</h3>
+          <span class="pill">5★ rated on Google</span>
+        </div>
+        <div class="grid t-grid">
+          <article class="t">
+            <div class="person">
+              <img class="avatar" src="assets/testimonial-1.jpg" alt="Reviewer 1" loading="lazy" width="48" height="48" />
+              <div>
+                <b>Bukola A.</b>
+                <span class="stars" aria-label="5 stars">★★★★★</span>
+              </div>
+            </div>
+            <p>“Georgi and the team are the absolute best. Their professionalism, attention to detail and timeliness are unmatched and they are the best cleaners I have ever had. 100% recommend their services”</p>
+          </article>
+          <article class="t">
+            <div class="person">
+              <img class="avatar" src="assets/testimonial-2.jpg" alt="Reviewer 2" loading="lazy" width="48" height="48" />
+              <div>
+                <b>Michael K.</b>
+                <span class="stars" aria-label="5 stars">★★★★★</span>
+              </div>
+            </div>
+            <p>“What sets them apart is communication: quick responses, photo updates when needed, and periodic quality checks so nothing slips. Since bringing them on, staff feedback about cleanliness has been overwhelmingly positive. We’re very happy to recommend True Cleaning Solutions to any business seeking a dependable, professional cleaning partner.”</p>
+          </article>
+          <article class="t">
+            <div class="person">
+              <img class="avatar" src="assets/testimonial-3.jpg" alt="Reviewer 3" loading="lazy" width="48" height="48" />
+              <div>
+                <b>Jessica G.</b>
+                <span class="stars" aria-label="5 stars">★★★★★</span>
+              </div>
+            </div>
+            <p>“We've been using Georgie and her team to clean our house for the past few years, and I honestly can’t recommend them enough! They are always on time, and the quality of their work is exceptional. My house always looks spotless after they’ve been. On top of that, they’re incredibly friendly and a pleasure to have around. I’ve recommended their services to so many people and I will continue to do so. If you’re looking for a reliable and friendly cleaning team, Georgie and her team are the best!”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT ====================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h3>Contact us</h3>
+          <span class="pill">Response within 24 hours</span>
+        </div>
+
+        <!-- Web3Forms integration -->
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="74450c0e-6043-4d16-8c93-6ce648d01f75" />
+          <input type="hidden" name="from_name" value="True Cleaning Solutions Website" />
+          <input type="hidden" name="subject" value="New enquiry from TrueCleaningSolutions.co.uk" />
+          <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
             <div>
-              <b>Bukola A.</b>
-              <span class="stars" aria-label="5 stars">★★★★★</span>
+              <label class="sr-only" for="name">Name</label>
+              <input id="name" name="name" placeholder="Full name" required />
             </div>
-          </div>
-          <p>“Georgi and the team are the absolute best. Their professionalism, attention to detail and timeliness are unmatched and they are the best cleaners I have ever had. 100% recommend their services”</p>
-        </article>
-        <article class="t">
-          <div class="person">
-            <img class="avatar" src="assets/testimonial-2.jpg" alt="Reviewer 2" />
             <div>
-              <b>Michael K.</b>
-              <span class="stars" aria-label="5 stars">★★★★★</span>
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="Email" required />
             </div>
-          </div>
-          <p>“What sets them apart is communication: quick responses, photo updates when needed, and periodic quality checks so nothing slips. Since bringing them on, staff feedback about cleanliness has been overwhelmingly positive. We’re very happy to recommend True Cleaning Solutions to any business seeking a dependable, professional cleaning partner.”</p>
-        </article>
-        <article class="t">
-          <div class="person">
-            <img class="avatar" src="assets/testimonial-3.jpg" alt="Reviewer 3" />
             <div>
-              <b>Jessica G.</b>
-              <span class="stars" aria-label="5 stars">★★★★★</span>
+              <label class="sr-only" for="phone">Phone</label>
+              <input id="phone" type="tel" name="phone" placeholder="Phone (optional)" inputmode="tel" />
+            </div>
+            <div>
+              <label class="sr-only" for="service">Service</label>
+              <select id="service" name="service">
+                <option value="Commercial Cleaning">Commercial Cleaning</option>
+                <option value="Residential Cleaning">Residential Cleaning</option>
+                <option value="End of Tenancy / Deep Clean">End of Tenancy / Deep Clean</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
           </div>
-          <p>“We've been using Georgie and her team to clean our house for the past few years, and I honestly can’t recommend them enough! They are always on time, and the quality of their work is exceptional. My house always looks spotless after they’ve been. On top of that, they’re incredibly friendly and a pleasure to have around. I’ve recommended their services to so many people and I will continue to do so. If you’re looking for a reliable and friendly cleaning team, Georgie and her team are the best!”</p>
-        </article>
+
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your space, schedule and any priorities…" required></textarea>
+
+          <!-- This ensures you receive replies straight to your inbox -->
+          <input type="hidden" name="replyto" value="{{email}}">
+
+          <button class="btn" id="submitBtn" type="submit">Send message</button>
+        </form>
       </div>
-    </div>
-  </section>
-
-  <!-- ======================= CONTACT ====================== -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <h3>Contact us</h3>
-        <span class="pill">Response within 24 hours</span>
-      </div>
-      <!-- Web3Forms integration -->
-      <!-- IMPORTANT: Replace WEB3FORMS_ACCESS_KEY with your real access key from https://web3forms.com/ -->
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="74450c0e-6043-4d16-8c93-6ce648d01f75" />
-        <input type="hidden" name="from_name" value="True Cleaning Solutions Website" />
-        <input type="hidden" name="subject" value="New enquiry from TrueCleaningSolutions.co.uk" />
-        <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
-
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
-          <div>
-            <label class="sr-only" for="name">Name</label>
-            <input id="name" name="name" placeholder="Full name" required />
-          </div>
-          <div>
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="Email" required />
-          </div>
-          <div>
-            <label class="sr-only" for="phone">Phone</label>
-            <input id="phone" name="phone" placeholder="Phone (optional)" />
-          </div>
-          <div>
-            <label class="sr-only" for="service">Service</label>
-            <select id="service" name="service">
-              <option value="Commercial Cleaning">Commercial Cleaning</option>
-              <option value="Residential Cleaning">Residential Cleaning</option>
-              <option value="End of Tenancy / Deep Clean">End of Tenancy / Deep Clean</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
-
-        <label class="sr-only" for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us about your space, schedule and any priorities…" required></textarea>
-
-        <!-- This ensures you receive replies straight to your inbox -->
-        <input type="hidden" name="replyto" value="{{email}}">
-        <!-- Optional redirect page after success -->
-        <!-- <input type="hidden" name="redirect" value="https://truecleaningsolutions.co.uk/thanks.html"> -->
-
-        <button class="btn" type="submit">Send message</button>
-        <div id="success" class="success">Thank you — your message has been sent. We’ll get back to you shortly.</div>
-        <div id="error" class="error">Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.</div>
-      </form>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ======================== FOOTER ====================== -->
   <footer>
     <div class="container foot">
       <small>© 2025 True Cleaning Solutions</small>
       <div class="socials" aria-label="Social media links">
-        <!-- As requested: icons only, no labels, in the white bottom bar -->
-        <a class="icon-btn" href="https://share.google/K8Q9P7xoyBoUV4XDx" target="_blank" rel="noopener" aria-label="Google Reviews">
-          <!-- Google G SVG -->
+        <!-- Icons only, no labels -->
+        <a class="icon-btn" href="https://share.google/K8Q9P7xoyBoUV4XDx" target="_blank" rel="noopener noreferrer" aria-label="Google Reviews">
           <svg width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <path d="M43.6 20.5H42V20H24v8h11.3C33.7 31.7 29.3 35 24 35c-6.6 0-12-5.4-12-12S17.4 11 24 11c3 0 5.7 1.1 7.7 3l5.7-5.7C34 4.9 29.3 3 24 3 12.3 3 3 12.3 3 24s9.3 21 21 21 21-9.3 21-21c0-1.2-.1-2.3-.4-3.5z" fill="#FFC107"/>
             <path d="M6.3 14.7l6.6 4.8C14.5 16.2 18.9 13 24 13c3 0 5.7 1.1 7.7 3l5.7-5.7C34 4.9 29.3 3 24 3 16 3 9.1 7.6 6.3 14.7z" fill="#FF3D00"/>
@@ -927,107 +557,125 @@ If you’re looking for a cleaning team that feels like a trusted partner—not 
             <path d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.3-3.5 5.7-6.1 6.8l6.2 5.2C37 39 45 33 45 24c0-1.2-.1-2.3-.4-3.5z" fill="#1976D2"/>
           </svg>
         </a>
-        <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61553856447021" target="_blank" rel="noopener" aria-label="Facebook">
+        <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61553856447021" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.99 3.66 9.13 8.44 9.94v-7.03H7.9v-2.91h2.42V9.41c0-2.4 1.43-3.73 3.62-3.73 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.19 0-1.56.74-1.56 1.49v1.79h2.65l-.42 2.91h-2.23v7.03c4.78-.81 8.44-4.95 8.44-9.94z"/></svg>
         </a>
-        <a class="icon-btn" href="https://instagram.com/truecleaningsolutions" target="_blank" rel="noopener" aria-label="Instagram">
+        <a class="icon-btn" href="https://instagram.com/truecleaningsolutions" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a6 6 0 110 12 6 6 0 010-12zm0 2.2A3.8 3.8 0 1015.8 13 3.8 3.8 0 0012 9.2zM18.25 5.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
         </a>
       </div>
     </div>
   </footer>
 
+  <!-- Toast live region -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
   <script>
-// ====== Hero video: keep muted autoplay (no sound button)
-const video = document.getElementById('heroVideo');
-if (video) {
-  video.muted = true;
-  video.play().catch(()=>{});
-}
+  // ====== Hero video: keep muted autoplay (no sound button)
+  const video = document.getElementById('heroVideo');
+  if (video) {
+    video.muted = true;
+    video.play().catch(()=>{});
+  }
 
-// ====== Web3Forms: submit without leaving the page (toast message)
-function showToast(msg, isError=false){
-  const toast = document.getElementById('toast');
-  if(!toast) return;
-  toast.textContent = msg;
-  toast.classList.remove('error');
-  if(isError) toast.classList.add('error');
-  toast.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(()=> toast.classList.remove('show'), 3500);
-}
+  // ====== Web3Forms: submit without leaving the page (toast message)
+  function showToast(msg, isError=false){
+    const toast = document.getElementById('toast');
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.remove('error');
+    if(isError) toast.classList.add('error');
+    toast.classList.add('show');
+    toast.tabIndex = -1;
+    toast.focus(); // SR announces immediately
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(()=> toast.classList.remove('show'), 3500);
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();                 // <-- stops page redirect
-    try{
-      const data = new FormData(form);
-      const resp = await fetch(form.action, { method: 'POST', body: data });
-      const json = await resp.json();
-      if(json.success){
-        showToast("Thank you — your message has been sent. We’ll get back to you shortly.");
-        form.reset();
-      } else {
-        throw new Error(json.message || 'Submission failed');
-      }
-    } catch(err){
-      console.error(err);
-      showToast("Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.", true);
-    }
-  });
-});
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // stop redirect
 
-// ====== Mobile hamburger toggle (runs only if elements exist)
-const navToggle = document.getElementById('navToggle');
-const navLinksEl = document.getElementById('primary-navigation');
-if (navToggle && navLinksEl){
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinksEl.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-}
+      // Honeypot: if checked, abort silently
+      const honeypot = form.querySelector('input[name="botcheck"]');
+      if (honeypot && honeypot.checked) return;
 
-// === Scroll-into-view glow (safe if sections are missing)
-(function(){
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const targets = document.querySelectorAll('#services .card, #testimonials .t, #our-story .tl-card');
-  if (!('IntersectionObserver' in window) || !targets.length) return;
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        el.classList.add('glow-in');
-        setTimeout(() => el.classList.remove('glow-in'), 800);
-        obs.unobserve(el);
+      // Disable button + busy state
+      if (btn) { btn.disabled = true; btn.setAttribute('aria-busy','true'); btn.textContent = 'Sending…'; }
+
+      try{
+        const data = new FormData(form);
+        const controller = new AbortController();
+        const t = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
+        const resp = await fetch(form.action, { method: 'POST', body: data, signal: controller.signal });
+        clearTimeout(t);
+        const json = await resp.json();
+
+        if(json.success){
+          showToast("Thank you — your message has been sent. We’ll get back to you shortly.");
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch(err){
+        console.error(err);
+        showToast("Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.", true);
+      } finally {
+        if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = 'Send message'; }
       }
     });
-  }, { threshold: 0.25 });
-  targets.forEach(el => io.observe(el));
-})();
-</script>
+  });
 
+  // ====== Mobile hamburger toggle + close behaviours
+  const navToggle = document.getElementById('navToggle');
+  const navLinksEl = document.getElementById('primary-navigation');
+  if (navToggle && navLinksEl){
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Close menu when a link is clicked
+    navLinksEl.addEventListener('click', e => {
+      if (e.target.closest('a')) {
+        navLinksEl.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+      }
+    });
+    // Close with Esc
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinksEl.classList.contains('open')) {
+        navLinksEl.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+        navToggle.focus();
+      }
+    });
+  }
 
-  <!-- ================= SETUP NOTES =================
-  1) Place assets in /assets :
-     - hero.mp4 (short, muted by default). Also add hero-poster.jpg for faster first paint.
-     - tcs-logo@2x.png (transparent background)
-     - testimonial-1.jpg / testimonial-2.jpg / testimonial-3.jpg (your chosen photos)
+  // === Scroll-into-view glow (safe if sections are missing)
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const targets = document.querySelectorAll('#services .card, #testimonials .t, #our-story .tl-card');
+    if (!('IntersectionObserver' in window) || !targets.length) return;
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.classList.add('glow-in');
+          setTimeout(() => el.classList.remove('glow-in'), 800);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.25 });
+    targets.forEach(el => io.observe(el));
+  })();
+  </script>
 
-  2) Web3Forms: Sign in at web3forms.com → copy your Access Key → replace WEB3FORMS_ACCESS_KEY above.
-     - Make sure the target email in your Web3Forms settings is contact@truecleaningsolutions.co.uk.
-     - If you still don’t receive emails, check spam and Web3Forms logs.
-
-  3) GitHub Pages:
-     - Create a repo, add this index.html and an assets folder with the images/video.
-     - Settings → Pages → Deploy from branch → main / root.
-
-  4) Footer socials: Update the three hrefs to your exact Google review page, Facebook and Instagram.
-  5) Colours & spacing follow your beige/taupe brief. Adjust in :root if needed.
-  -->
-<!-- Small pop-up message for the contact form -->
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <!-- Optional: analytics placeholder — add your GA4/Plausible here (keep commented until ready) -->
+  <!-- <script>/* analytics */</script> -->
 </body>
 </html>
