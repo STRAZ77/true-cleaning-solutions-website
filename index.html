@@ -933,27 +933,16 @@
   </footer>
 
   <script>
-    // ====== Hero Sound Toggle ======
-    const video = document.getElementById('heroVideo');
-    const btn = document.getElementById('soundBtn');
-    const icon = document.getElementById('soundIcon');
-    const label = document.getElementById('soundLabel');
+// ====== Hero video: keep muted autoplay (no sound button)
+const video = document.getElementById('heroVideo');
+if (video) {
+  video.muted = true;
+  video.play().catch(()=>{});
+}
 
-    function updateSoundUI(){
-      const muted = video.muted;
-      icon.textContent = muted ? '🔇' : '🔊';
-      label.textContent = muted ? 'Click for sound' : 'Mute';
-      btn.setAttribute('aria-pressed', String(!muted));
-    }
-    btn.addEventListener('click', () => { video.muted = !video.muted; if(!video.muted){ video.play().catch(()=>{});} updateSoundUI(); });
-    document.addEventListener('visibilitychange', ()=>{ if(document.hidden) { video.muted = true; updateSoundUI(); } });
-    updateSoundUI();
-
-    // ====== Web3Forms: submit without leaving the page (toast message)
-const form = document.getElementById('contactForm');
-const toast = document.getElementById('toast');
-
+// ====== Web3Forms: submit without leaving the page (toast message)
 function showToast(msg, isError=false){
+  const toast = document.getElementById('toast');
   if(!toast) return;
   toast.textContent = msg;
   toast.classList.remove('error');
@@ -963,11 +952,14 @@ function showToast(msg, isError=false){
   window._toastTimer = setTimeout(()=> toast.classList.remove('show'), 3500);
 }
 
-if (form){
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();  // <-- stops page redirect
-    const data = new FormData(form);
+    e.preventDefault();                 // <-- stops page redirect
     try{
+      const data = new FormData(form);
       const resp = await fetch(form.action, { method: 'POST', body: data });
       const json = await resp.json();
       if(json.success){
@@ -981,9 +973,9 @@ if (form){
       showToast("Sorry, something went wrong. Please try again or email contact@truecleaningsolutions.co.uk.", true);
     }
   });
-}
+});
 
-// ====== Mobile hamburger toggle
+// ====== Mobile hamburger toggle (runs only if elements exist)
 const navToggle = document.getElementById('navToggle');
 const navLinksEl = document.getElementById('primary-navigation');
 if (navToggle && navLinksEl){
@@ -993,7 +985,7 @@ if (navToggle && navLinksEl){
   });
 }
 
-// === Scroll-into-view glow (works on desktop + mobile)
+// === Scroll-into-view glow (safe if sections are missing)
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const targets = document.querySelectorAll('#services .card, #testimonials .t, #our-story .tl-card');
@@ -1010,7 +1002,8 @@ if (navToggle && navLinksEl){
   }, { threshold: 0.25 });
   targets.forEach(el => io.observe(el));
 })();
-  </script>
+</script>
+
 
   <!-- ================= SETUP NOTES =================
   1) Place assets in /assets :
