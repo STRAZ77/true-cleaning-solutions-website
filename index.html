@@ -38,11 +38,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- === Feature: Fonts & Hero Layout (Start) === -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- === Feature: Fonts & Hero Layout (End) === -->
-
 
   <!-- JSON-LD: LocalBusiness -->
   <script type="application/ld+json">
@@ -277,119 +272,6 @@
     }
     .toast.error{ background:#7b2222; }  /* red = error */
     .toast.show{ opacity:1; transform: translateY(0); }
-    /* === Feature: Fonts & Hero Layout === */
-/* Typography: match the tight, modern sans look */
-html, body {
-  font-family: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  letter-spacing: 0; /* neutral default for body */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Headings: slightly tighter tracking + clearer scale */
-h1, h2, h3, h4 {
-  letter-spacing: -0.015em; /* subtle tightening like the example */
-  line-height: 1.12;
-  font-weight: 700;
-}
-
-/* Small UI text (nav, pills, buttons): crisp, a hair wider for readability */
-.nav-links a,
-.pill,
-.btn {
-  letter-spacing: 0.02em;
-}
-
-/* Optional: hero heading slightly bolder for punch */
-.hero h2 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-}
-
-/* === Hero framing/layout (desktop + mobile) === */
-/* Full-bleed feel with stable aspect on small screens, no odd cropping */
-.hero { padding-top: 0 !important; }
-.hero-media {
-  /* Keep it immersive on desktop, a touch shallower on small screens */
-  height: clamp(56vh, 70vh, 78vh);
-  border-radius: 0;             /* example feels edge-to-edge */
-  overflow: hidden;
-}
-
-/* Ensure video/image always centers nicely */
-.hero video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
-
-/* Mobile refinements */
-@media (max-width: 768px) {
-  .hero-media {
-    height: 64vh;              /* comfortable mobile viewport height */
-  }
-  .hero-overlay {
-    padding: 24px 16px 18px;   /* a bit tighter padding on small screens */
-  }
-  .hero h2 {
-    letter-spacing: -0.018em;  /* still tight but readable on mobile */
-  }
-}
-
-/* Prevent “jumps” if the video loads slowly */
-.hero video[poster] {
-  background: #000;
-}
-/* === Feature: Type Scale Tuning (match example rhythm) === */
-:root{
-  /* Fluid type steps: small → large screens */
-  --step--1: clamp(0.95rem, 0.12vw + 0.90rem, 1.00rem);  /* small UI text */
-  --step-0:  clamp(1.00rem, 0.20vw + 0.95rem, 1.0625rem);/* body ~16–17px */
-  --step-1:  clamp(1.125rem, 0.35vw + 1.00rem, 1.25rem);  /* h4 / subheads */
-  --step-2:  clamp(1.25rem,  0.60vw + 1.00rem, 1.50rem);  /* small h3 */
-  --step-3:  clamp(1.50rem,  1.00vw + 1.00rem, 2.00rem);  /* section h3 */
-  --step-4:  clamp(2.00rem,  2.20vw + 1.00rem, 2.75rem);  /* h2 general */
-  --step-5:  clamp(2.25rem,  3.20vw + 1.00rem, 3.50rem);  /* HERO headline */
-}
-
-/* Body remains crisp and readable */
-body{ font-size: var(--step-0); line-height: 1.6; }
-
-/* Global headings (keeps your existing tight tracking from previous step) */
-h1{ font-size: var(--step-4); }
-h2{ font-size: var(--step-3); }
-h3{ font-size: var(--step-2); }
-h4{ font-size: var(--step-1); }
-
-/* Specific sections for consistent hierarchy */
-.hero h2{
-  font-size: var(--step-5);       /* ~36–56px across breakpoints */
-  /* keeps your earlier weight/letter-spacing */
-}
-
-.section-head h3{
-  font-size: var(--step-3);       /* ~24–32px */
-}
-
-.card h4,
-.tl-card h4{
-  font-size: var(--step-1);       /* ~18–20px */
-}
-
-/* Comfortable hero paragraph/subtext */
-.hero p{
-  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.25rem);
-}
-
-/* Optional: slightly larger reviewer names without changing layout */
-.t .person b{
-  font-size: var(--step-1);
-}
-
-/* Nothing else changes; colors, spacing, animations remain yours */
-
   </style>
 </head>
 <body>
