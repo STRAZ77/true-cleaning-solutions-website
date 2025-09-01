@@ -38,6 +38,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- === Feature: Fonts & Hero Layout (Start) === -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- === Feature: Fonts & Hero Layout (End) === -->
+
 
   <!-- JSON-LD: LocalBusiness -->
   <script type="application/ld+json">
@@ -272,6 +277,71 @@
     }
     .toast.error{ background:#7b2222; }  /* red = error */
     .toast.show{ opacity:1; transform: translateY(0); }
+    /* === Feature: Fonts & Hero Layout === */
+/* Typography: match the tight, modern sans look */
+html, body {
+  font-family: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0; /* neutral default for body */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: slightly tighter tracking + clearer scale */
+h1, h2, h3, h4 {
+  letter-spacing: -0.015em; /* subtle tightening like the example */
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+/* Small UI text (nav, pills, buttons): crisp, a hair wider for readability */
+.nav-links a,
+.pill,
+.btn {
+  letter-spacing: 0.02em;
+}
+
+/* Optional: hero heading slightly bolder for punch */
+.hero h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+/* === Hero framing/layout (desktop + mobile) === */
+/* Full-bleed feel with stable aspect on small screens, no odd cropping */
+.hero { padding-top: 0 !important; }
+.hero-media {
+  /* Keep it immersive on desktop, a touch shallower on small screens */
+  height: clamp(56vh, 70vh, 78vh);
+  border-radius: 0;             /* example feels edge-to-edge */
+  overflow: hidden;
+}
+
+/* Ensure video/image always centers nicely */
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Mobile refinements */
+@media (max-width: 768px) {
+  .hero-media {
+    height: 64vh;              /* comfortable mobile viewport height */
+  }
+  .hero-overlay {
+    padding: 24px 16px 18px;   /* a bit tighter padding on small screens */
+  }
+  .hero h2 {
+    letter-spacing: -0.018em;  /* still tight but readable on mobile */
+  }
+}
+
+/* Prevent “jumps” if the video loads slowly */
+.hero video[poster] {
+  background: #000;
+}
   </style>
 </head>
 <body>
