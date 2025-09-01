@@ -1,0 +1,30 @@
+/* === Feature: Smooth Scroll Animations === */
+:root{
+  --reveal-distance: 14px;
+  --reveal-duration: .7s;
+  --reveal-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Hidden “pre-animation” state is only active while body has .reveal-init */
+body.reveal-init .reveal{
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+.reveal{
+  will-change: opacity, transform;
+  transition:
+    opacity var(--reveal-duration) ease,
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+.reveal.in{
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ transition: none !important; opacity: 1 !important; transform: none !important; }
+  body.reveal-init .reveal{ opacity: 1 !important; transform: none !important; }
+}
