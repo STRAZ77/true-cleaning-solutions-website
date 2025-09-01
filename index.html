@@ -342,6 +342,54 @@ h1, h2, h3, h4 {
 .hero video[poster] {
   background: #000;
 }
+/* === Feature: Type Scale Tuning (match example rhythm) === */
+:root{
+  /* Fluid type steps: small → large screens */
+  --step--1: clamp(0.95rem, 0.12vw + 0.90rem, 1.00rem);  /* small UI text */
+  --step-0:  clamp(1.00rem, 0.20vw + 0.95rem, 1.0625rem);/* body ~16–17px */
+  --step-1:  clamp(1.125rem, 0.35vw + 1.00rem, 1.25rem);  /* h4 / subheads */
+  --step-2:  clamp(1.25rem,  0.60vw + 1.00rem, 1.50rem);  /* small h3 */
+  --step-3:  clamp(1.50rem,  1.00vw + 1.00rem, 2.00rem);  /* section h3 */
+  --step-4:  clamp(2.00rem,  2.20vw + 1.00rem, 2.75rem);  /* h2 general */
+  --step-5:  clamp(2.25rem,  3.20vw + 1.00rem, 3.50rem);  /* HERO headline */
+}
+
+/* Body remains crisp and readable */
+body{ font-size: var(--step-0); line-height: 1.6; }
+
+/* Global headings (keeps your existing tight tracking from previous step) */
+h1{ font-size: var(--step-4); }
+h2{ font-size: var(--step-3); }
+h3{ font-size: var(--step-2); }
+h4{ font-size: var(--step-1); }
+
+/* Specific sections for consistent hierarchy */
+.hero h2{
+  font-size: var(--step-5);       /* ~36–56px across breakpoints */
+  /* keeps your earlier weight/letter-spacing */
+}
+
+.section-head h3{
+  font-size: var(--step-3);       /* ~24–32px */
+}
+
+.card h4,
+.tl-card h4{
+  font-size: var(--step-1);       /* ~18–20px */
+}
+
+/* Comfortable hero paragraph/subtext */
+.hero p{
+  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.25rem);
+}
+
+/* Optional: slightly larger reviewer names without changing layout */
+.t .person b{
+  font-size: var(--step-1);
+}
+
+/* Nothing else changes; colors, spacing, animations remain yours */
+
   </style>
 </head>
 <body>
